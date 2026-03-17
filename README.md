@@ -10,6 +10,7 @@ A pretty good dev container setup for python development.
 
 ## Setup
 1. Install `copier`
+
 [`copier`](https://copier.readthedocs.io/en/latest/) is a CLI app for rendering
 project templates. I recommend installing it via `pipx`, although any tool
 should work.
@@ -20,6 +21,7 @@ pipx inject copier copier-template-extensions
 ```
 
 2. Create a project from the template
+
 Run:
 
 ```bash
@@ -27,6 +29,7 @@ copier copy --trust https://gitlab.accenta.ai/accenta/recherche/template-python 
 ```
 
 3. Launch dev container
+
 Launch VS Code or run `just devcontainer:up` from your terminal.
 
 ### Per user setup
