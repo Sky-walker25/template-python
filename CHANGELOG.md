@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-03-17
+Setup ruff and black pre commit hooks.
+
+### Added
+- feat(template): add ruff and pdm pre commit hooks
+  (a9b480dfeddc6f774158d8fcf24f889f996a393b)
+
+
 ## [0.2.1] - 2026-03-17
 Fix mypy version which was manually edited for testing changes.
 
