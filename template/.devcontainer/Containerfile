@@ -1,0 +1,16 @@
+FROM docker.io/python:3.11.7-slim-bookworm
+
+# Install development tools
+RUN apt update && apt install -y \
+    git \
+    make \
+    pipx \
+    python3 \
+    ssh
+
+ENV PIPX_BIN_DIR=/usr/bin/
+RUN pipx install pdm && pipx install rust-just && pipx install copier
+
+# Setup virtual env
+RUN python -m venv /venv
+RUN echo "source /venv/bin/activate" >> ~/.bashrc

@@ -1,0 +1,41 @@
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ description }}"
+authors = [
+    {name = "{{ author_name }}", email = "{{ author_email }}"},
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+dependencies = []
+
+
+[dependency-groups]
+dev = [
+    "mypy[install-types]>=1.20.1",
+    "pre-commit>=4.2.0",
+    "ruff>=0.15.6",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool]
+    [tool.mypy]
+    cache_dir = "/tmp/cache/mypy/"
+
+    [tool.setuptools]
+        [tool.setuptools.packages.find]
+        where = ["src"]
+
+    [tool.pdm]
+    distribution = true
+
+    [tool.ruff]
+    cache-dir = "/tmp/cache/ruff/"
+
+    [tool.pytest.ini_options]
+    cache_dir = "/tmp/cache/pytest/"

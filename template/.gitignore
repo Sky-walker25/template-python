@@ -1,0 +1,11 @@
+# Filled tokens and secrets
+.env.local
+.devcontainer/env.local
+
+# Local, per-user setup script
+.devcontainer/setup.sh
+
+# Builds and cache
+*.egg-info/
+__pycache__
+*.pyc

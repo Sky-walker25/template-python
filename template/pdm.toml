@@ -1,0 +1,7 @@
+check_update = false
+
+[venv]
+backend = "venv"
+
+[lock]
+format = "pylock"

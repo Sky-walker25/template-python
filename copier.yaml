@@ -1,0 +1,32 @@
+_subdirectory: template
+_jinja_extensions:
+    - copier_templates_extensions.TemplateExtensionLoader
+    - extensions.py:GitContext
+_exclude:
+    - extensions.py
+
+project_name:
+    type: str
+    help: Project name?
+
+description:
+    type: str
+    help: Project description?
+
+author_name:
+    type: str
+    help: Author name?
+    default: "{{ git_user_name }}"
+
+
+author_email:
+    type: str
+    help: Author email?
+    default: "{{ git_user_email }}"
+
+_tasks:
+    # Initialize git repository and make initial commit
+    - "git init"
+    - "git add . && git commit -m 'chore(repo): Setup project structure'"
+    # Create local env file
+    - "cp .env .env.local && cp .devcontainer/env .devcontainer/env.local"

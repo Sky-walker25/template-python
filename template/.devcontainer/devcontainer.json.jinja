@@ -1,0 +1,56 @@
+// -*- jsonc -*-
+// For format details, see https://containers.dev/implementors/json_reference/.
+{
+  "name": "devcontainer-{{ project_name }}",
+  "build": {
+    "dockerfile": "Containerfile"
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {},
+  // Set variables during build process
+  "runArgs": [
+    "--name",
+    "devcontainer-${localWorkspaceFolderBasename}"
+  ],
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "just setup",
+  // Set SSH agent
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
+  },
+  // Mount SSH agent
+  "mounts": [
+    {
+      "source": "${localEnv:SSH_AUTH_SOCK}",
+      "target": "${localEnv:SSH_AUTH_SOCK}",
+      "type": "bind"
+    }
+  ],
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/venv/bin/python",
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+          }
+        }
+      },
+      "extensions": [
+        "charliermarsh.ruff",
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.isort",
+        "ms-python.mypy-type-checker",
+        "ms-python.debugpy",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "ms-vscode.vscode-speech",
+        "ms-vscode.vscode-speech-language-pack-fr-fr"
+      ]
+    }
+  }
+}
