@@ -25,7 +25,7 @@ pipx inject copier copier-template-extensions
 Run:
 
 ```bash
-copier copy --trust https://gitlab.accenta.ai/accenta/recherche/template-python <PROJECT_NAME>
+copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
 ```
 
 3. Launch dev container
