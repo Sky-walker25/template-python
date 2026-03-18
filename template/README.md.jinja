@@ -1,0 +1,14 @@
+# {{ project_name }}
+
+## Setup
+Development is conducted inside development containers. VS Code handles most
+container management (build, start, stop) automatically when you open the
+project ; outside of VS Code, you can use `just` recipes (see
+[devcontainers.just](./devcontainers.just)).
+
+Build time secrets are stored in `.devcontainer/env.local` ; run time secrets
+are stored in the `.env.local` file. Both files are not committed to the
+repository, instead `.devcontainer/env` and `.env` files act as templates.
+
+To set up your development environment from the CLI, use `just
+devcontainer::up`.
