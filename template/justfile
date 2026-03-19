@@ -16,7 +16,7 @@ setup:
     pdm run mypy src/ --install-types --non-interactive 2>/dev/null || true
     # Setup pre commit hooks
     pdm run pre-commit install
-    pdm run pre-commit run --all-files
+    pdm run pre-commit run --all-files || true
     # Source local setup script
     [ -f .devcontainer/setup.sh ] && .devcontainer/setup.sh || true
     @printf "\n\nDevelopment environment setup, don't forget to source the virtual environment with:\n$(pdm venv activate)\n\n"
