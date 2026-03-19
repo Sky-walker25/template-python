@@ -9,7 +9,8 @@ RUN apt update && apt install -y \
     ssh
 
 ENV PIPX_BIN_DIR=/usr/bin/
-RUN pipx install pdm && pipx install rust-just && pipx install copier
+RUN pipx install pdm && pipx install rust-just
+RUN pipx install copier && pipx inject copier copier-template-extensions
 
 # Setup virtual env
 RUN python -m venv /venv
