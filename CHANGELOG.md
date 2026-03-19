@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] - 2026-03-19
+Fix copier installation from inside the dev container
+
+### Fix
+- fix(setup): install copier extension
+  (e35b340d6ea3bd71dca1577adb9316e16ef14c38)
+
+
 ## [0.3.0] - 2026-03-19
 Detail documentation for new project and improve setup. Add black and isort to
 pre-commit hooks.
