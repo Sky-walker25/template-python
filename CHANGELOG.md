@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2026-03-25
+Clean up clutter my moving just recipes to `.recipes/`. Add the option to
+update the template from latest commit (instead of latest tag).
+
+### Added
+- feat(template): add option to update to template's last commit
+  (c54f88604c98abaaac85faa41c3f1922c08d3238)
+
+### Changed
+- refacto(template): move just recipes to `.recipes`
+  (90dbf7dbe044930bff75b16bbc03a20b13bbae8d)
+- refacto(template): remove clutter (7e8b750520362b419b30e12c4d472b36c98b05ea)
+
+
 ## [0.3.1] - 2026-03-19
 Fix copier installation from inside the dev container
 
