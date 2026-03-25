@@ -1,12 +1,9 @@
-mod devcontainers
+mod devcontainers '.recipes/devcontainers.just'
+mod template '.recipes/template.just'
 
 # List available recipes when no argument is provided
 default:
     @just --list --justfile {{justfile()}}
-
-# Update the template for the project
-update:
-    copier update --trust --skip-answered --skip-tasks
 
 # Setup the development environment
 setup:
