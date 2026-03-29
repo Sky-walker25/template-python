@@ -19,3 +19,22 @@ Install libraries from pypi using: `pdm add <LIB>`. The library will appear in
 dependencies or dependency groups, see [pdm
 documentation](https://pdm-project.org/en/latest/usage/dependency/) for more
 information.
+
+### Project architecture
+The project is organized as follows:
+
+```
+.recipes/               # Recipes modules for just, see also `justfile`
+.devcontainer/          # Dev container configuration and setup
+├── devcontainer.json   # Root configuration
+├── Containerfile       # Container definition
+├── setup.sh            # Optional, per user, git-untracked configuration
+src/
+├── {{ project_name}}/  # {{ project_name | title }} package
+│   ├── init.py         # Package initialization
+README.md               # Documentation root
+CHANGELOG.md            # Human readable list of changes
+justfile                # List of recipes
+.env                    # Template configuration
+.env.local              # Per-user, git-untracked secrets and environment
+```
