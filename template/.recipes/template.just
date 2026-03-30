@@ -7,4 +7,3 @@ update head="false":
 # Check for template update
 check-update:
     copier check-update
-
