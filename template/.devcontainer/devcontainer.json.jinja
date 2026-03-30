@@ -16,7 +16,8 @@
   "postCreateCommand": "just setup",
   // Set SSH agent
   "remoteEnv": {
-    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}"
+    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
+    "COPILOT_GITHUB_TOKEN": "${localEnv:COPILOT_GITHUB_TOKEN}"
   },
   // Mount SSH agent
   "mounts": [
