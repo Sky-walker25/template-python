@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-03-30
+Improve documentation and dev container setup.
+
+### Added
+- feat(docs): add project organization
+  (f68ae1c97b921520f943cfce2e98818280420602)
+- feat(devcontainer): set locales (16a71c0c54d18d992c0c989956c89975fe5b439d)
+- feat(repo): add AGENT.md (5cc03b933065c1abbaa542b3a7a2085f150647ce)
+
+### Changed
+- style(docs): improve presentation (b13c57e736d29e95229a91caefd4147f096f06e8)
+- feat(docs): improve README section on dependencies
+  (c7846f04e17de5b95107a1159b4ba28af4b9e3da)
+
+
 ## [0.3.3] - 2026-03-25
 Fix the working directory for commands executed from just recipes in sub
 directories.
