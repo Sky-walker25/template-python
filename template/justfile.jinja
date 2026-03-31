@@ -1,0 +1,43 @@
+mod devcontainers '.recipes/devcontainers.just'
+mod template '.recipes/template.just'
+
+# List available recipes when no argument is provided
+default:
+    @just --list --justfile {{justfile()}}
+
+# Setup the development environment
+setup:
+    # Install requirements in all groups
+    [ -f pylock.toml ] && pdm sync --group :all || pdm install --group :all
+    # Run mypy and install missing types
+    pdm run mypy src/ --install-types --non-interactive 2>/dev/null || true
+    # Setup pre commit hooks
+    pdm run pre-commit install
+    pdm run pre-commit run --all-files || true
+    # Source local setup script
+    [ -f .devcontainer/setup.sh ] && .devcontainer/setup.sh || true
+    @printf "\n\nDevelopment environment setup, don't forget to source the virtual environment with:\n$(pdm venv activate)\n\n"
+
+# Draft a new release
+release:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # Preview unreleased commits and the proposed version
+    echo "=== Unreleased commits ==="
+    git cliff --unreleased --bump --strip all
+    proposed=$(git cliff --bumped-version)
+    echo ""
+    read -rp "Accept version [$proposed] or enter a new one: " input
+    version="${input:-$proposed}"
+    # Prepend new changelog section and open editor for manual adjustments
+    git cliff --unreleased --tag "$version" --prepend CHANGELOG.md
+    ${EDITOR:-vi} CHANGELOG.md
+    # Bump __version__ in Python source
+    sed -i "s/__version__ = \".*\"/__version__ = \"$version\"/" src/{{project_name}}/__init__.py
+    # Commit and create a lightweight tag
+    git add CHANGELOG.md src/{{project_name}}/__init__.py
+    git commit -m "chore(repo): release $version"
+    git tag "$version"
+    echo ""
+    echo "Release $version committed and tagged. Don't forget to push:"
+    echo "  git push && git push --tags"

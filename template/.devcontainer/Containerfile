@@ -18,6 +18,7 @@ ENV LANG en_US.UTF-8
 ENV PIPX_BIN_DIR=/usr/bin/
 RUN pipx install pdm && pipx install rust-just
 RUN pipx install copier && pipx inject copier copier-template-extensions
+RUN pipx install git-cliff
 
 # Setup virtual env
 RUN python -m venv /venv
