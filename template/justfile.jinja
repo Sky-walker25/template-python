@@ -18,6 +18,10 @@ setup:
     [ -f .devcontainer/setup.sh ] && .devcontainer/setup.sh || true
     @printf "\n\nDevelopment environment setup, don't forget to source the virtual environment with:\n$(pdm venv activate)\n\n"
 
+# Print changes since last release
+unreleased:
+    @git cliff --unreleased --bump --strip all
+
 # Draft a new release
 release:
     #!/usr/bin/env bash
