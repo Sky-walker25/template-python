@@ -1,0 +1,20 @@
+mod devcontainers '.recipes/devcontainers.just'
+mod template '.recipes/template.just'
+mod release '.recipes/release.just'
+
+# List available recipes when no argument is provided
+default:
+    @just --list --justfile {{justfile()}}
+
+# Setup the development environment
+setup:
+    # Install requirements in all groups
+    [ -f pylock.toml ] && pdm sync --group :all || pdm install --group :all
+    # Run mypy and install missing types
+    pdm run mypy src/ --install-types --non-interactive 2>/dev/null || true
+    # Setup pre commit hooks
+    pdm run pre-commit install
+    pdm run pre-commit run --all-files || true
+    # Source local setup script
+    [ -f .devcontainer/setup.sh ] && .devcontainer/setup.sh || true
+    @printf "\n\nDevelopment environment setup, don't forget to source the virtual environment with:\n$(pdm venv activate)\n\n"
