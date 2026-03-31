@@ -3,7 +3,7 @@ mod template '.recipes/template.just'
 
 # List available recipes when no argument is provided
 default:
-    @just --list --justfile {{justfile()}}
+    @just --list --justfile {% raw %}{{justfile()}}{% endraw %}
 
 # Setup the development environment
 setup:
