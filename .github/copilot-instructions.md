@@ -1,36 +1,24 @@
 # Copilot Instructions
 
+## README is the source of truth
+
+`README.md` describes the project structure, conventions, and workflow. It is
+the authoritative reference for any task performed in this repository.
+
+### Before starting a task
+Read `README.md` in full. Understand the project layout, tooling, and any rules
+that apply to the area you are about to change.
+
+### Before finishing a task
+Re-read `README.md` and verify your changes have not diverged from the rules and
+conventions described there (architecture, tooling, naming, workflow, etc.).
+
+### Keeping the README up to date
+If your changes make any part of `README.md` inaccurate or incomplete (new
+commands, changed structure, updated conventions, …), update the README as part
+of the same task. The README must always reflect the actual state of the project.
+
 This repository is a **Copier template** that generates standardized Python projects. The `template/` subdirectory is the actual template source; the root-level files configure and drive the template generation.
-
-## Commands
-
-All commands use `pdm` for Python tooling and `just` for task orchestration.
-
-```bash
-# Lint and format
-pdm run ruff check .
-pdm run ruff format .
-pdm run mypy src/
-
-# Run all pre-commit hooks
-pdm run pre-commit run --all-files
-
-# Install/sync dependencies
-pdm sync --group :all
-
-# Dev container lifecycle
-just devcontainer::build
-just devcontainer::up
-just devcontainer::stop
-just devcontainer::down
-
-# Release management
-just release::check   # preview unreleased commits
-just release::release # draft a new release
-just release::push    # push commits and tags
-```
-
-Just recipes are modularized under `.recipes/` and invoked as `just module::recipe`.
 
 ## Architecture
 
