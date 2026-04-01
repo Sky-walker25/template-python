@@ -8,6 +8,31 @@ A pretty good dev container setup for python development.
 - Environment is setup after the workspace is mounted on first build. This is used for installing requirements, setting-up mypy, pre-commits, etc.
     - Includes local, per-user setup script.
 
+## Repository layout
+
+```
+├── copier.yaml          # Template config: prompts, tasks, Jinja extensions
+├── extensions.py        # Jinja ContextHook — injects git_user_name / git_user_email
+├── cliff.toml           # git-cliff config for CHANGELOG generation (conventional commits)
+├── template/            # Actual Copier template source
+│   ├── .devcontainer/   # Dev container definition (Containerfile, devcontainer.json)
+│   ├── .recipes/        # Just recipe modules copied into generated projects
+│   │   ├── devcontainers.just
+│   │   ├── release.just.jinja
+│   │   └── template.just
+│   ├── src/{{project_name}}/  # Generated package (src layout)
+│   └── pyproject.toml.jinja   # Project metadata template
+```
+
+### Copier variables
+
+| Variable | Description | Default |
+|---|---|---|
+| `project_name` | Python package name | — |
+| `description` | Short project description | — |
+| `author_name` | Author full name | `git config user.name` |
+| `author_email` | Author e-mail address | `git config user.email` |
+
 ## Setup
 1. Install `copier`
 
@@ -27,6 +52,9 @@ Run:
 ```bash
 copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
 ```
+
+Copier runs three post-copy tasks: `git init`, an initial commit, and copying
+`.env` → `.env.local`.
 
 3. Launch dev container
 
@@ -49,3 +77,25 @@ The container name is defined in both `devcontainer.json` and `devcontainers.jus
 
 ## Python
 The python environment is created in `/venv`. Mypy, Ruff and Pytest have their cache located in `/tmp/cache/<tool>/` (set in `pyproject.toml`).
+
+### Package manager — PDM
+
+Generated projects use [PDM](https://pdm-project.org/) to manage dependencies and the
+virtual environment. The venv is created at `/venv` inside the container.
+
+```bash
+pdm add <package>          # add a runtime dependency
+pdm add -dG dev <package>  # add a dev dependency
+pdm sync --group :all      # install / sync all groups
+```
+
+### Code quality
+
+| Tool | Purpose |
+|---|---|
+| [Ruff](https://docs.astral.sh/ruff/) | Linting and formatting |
+| [Mypy](https://mypy.readthedocs.io/) | Static type checking (`install-types` enabled) |
+| [pre-commit](https://pre-commit.com/) | Git hooks that run Ruff and common checks on commit |
+
+All three are installed as dev dependencies and configured in `pyproject.toml`.
+Type hints are required on all function signatures.
