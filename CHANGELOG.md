@@ -5,6 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-04-01
+Mix of fixes and improvements and a few new features.
+
+### Added
+- Add package default version in `__init__`
+- Add copilot instructions
+- Add missing pre-commit to devcontainer
+- Add recipe to check changes to be released
+- Add release script using git-cliff
+
+### Changed
+- Improve README
+- Improve README
+- Improve instructions
+- Detail version, commits and changelog
+- Update instructions
+- Detail just recipes in README
+- Setup devcontainer for the template repo
+- Set container hostname
+- Move recipes to new module
+
+### Fixed
+- Fix missing comma
+- Fix typos
+- Correct recipe command to just devcontainers::up
+- Correct cache path from /cache/<tool> to /tmp/cache/<tool>/
+- Fix jinja/justfile competition on brackets
+
+### Removed
+- Remove addition python3 install
+- Remove duplicated check
+- Remove AGENT.md
+
+
 ## [0.4.1] - 2026-03-31
 Add GitHub copilot token to mounted variables in the devcontainer. Clean up
 some files.
