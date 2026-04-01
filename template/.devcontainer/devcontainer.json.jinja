@@ -11,6 +11,8 @@
   "runArgs": [
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}"
+    "--hostname",
+    "{{ project_name }}"
   ],
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "just setup",
