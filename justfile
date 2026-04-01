@@ -7,5 +7,8 @@ default:
 
 # Setup the development environment
 setup:
+    # Setup pre-commit hooks
+    pre-commit install
+    pre-commit run --all-files || true
     # Source local setup script
     [ -f .devcontainer/setup.sh ] && .devcontainer/setup.sh || true
