@@ -1,0 +1,39 @@
+// -*- jsonc -*-
+// For format details, see https://containers.dev/implementors/json_reference/.
+{
+  "name": "devcontainer-template-python",
+  "build": {
+    "dockerfile": "Containerfile"
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {},
+  // Set variables during build process
+  "runArgs": [
+    "--name",
+    "devcontainer-${localWorkspaceFolderBasename}"
+    "--hostname",
+    "template-python"
+  ],
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "just setup",
+  // Set SSH agent
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
+    "COPILOT_GITHUB_TOKEN": "${localEnv:COPILOT_GITHUB_TOKEN}"
+  },
+  // Mount SSH agent
+  "mounts": [
+    {
+      "source": "${localEnv:SSH_AUTH_SOCK}",
+      "target": "${localEnv:SSH_AUTH_SOCK}",
+      "type": "bind"
+    }
+  ],
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": []
+    }
+  }
+}

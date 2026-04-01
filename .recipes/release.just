@@ -1,0 +1,31 @@
+set working-directory := ".."
+
+# Print changes since last release
+check:
+    @git cliff --unreleased --bump --strip all
+
+# Draft a new release
+release:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    # Preview unreleased commits and the proposed version
+    echo "=== Unreleased commits ==="
+    git cliff --unreleased --bump --strip all
+    proposed=$(git cliff --bumped-version)
+    echo ""
+    read -rp "Accept version [$proposed] or enter a new one: " input
+    version="${input:-$proposed}"
+    # Prepend new changelog section and open editor for manual adjustments
+    git cliff --unreleased --tag "$version" --prepend CHANGELOG.md
+    ${EDITOR:-vi} CHANGELOG.md
+    # Commit and create a lightweight tag
+    git add CHANGELOG.md
+    git commit -m "chore(repo): release $version"
+    git tag "$version"
+    echo ""
+    echo "Release $version committed and tagged. Don't forget to push:"
+    echo "  just release::push (or manually: git push && git push --tags)"
+
+# Push the latest commits and tags
+push:
+    @git push && git push --tags
