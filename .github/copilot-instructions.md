@@ -51,3 +51,7 @@ This repository is a **Copier template** that generates standardized Python proj
 **Generated project src layout:** Packages live in `src/<project_name>/` and include a `py.typed` marker (PEP 561). Python version is pinned to `==3.11.*`.
 
 **Type hints:** Required on all function signatures; checked by Mypy with `install-types` enabled.
+
+## Tooling
+
+**`just` recipes are for users only.** Never invoke `just` recipes yourself.
