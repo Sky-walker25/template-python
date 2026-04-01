@@ -48,4 +48,4 @@ When using VS Code, it handles most container related tasks: building, mounting 
 The container name is defined in both `devcontainer.json` and `devcontainers.just` as the equivalent of `"devcontainer-${basename $pwd}"`.
 
 ## Python
-The python environment is created in `/venv`. Mypy, Ruff and Pytest have their cache located in `/cache/<tool>` (set in `pyproject.toml`).
+The python environment is created in `/venv`. Mypy, Ruff and Pytest have their cache located in `/tmp/cache/<tool>/` (set in `pyproject.toml`).
