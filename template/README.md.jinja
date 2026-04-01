@@ -4,7 +4,7 @@
 Development is conducted inside development containers. VS Code handles most
 container management (build, start, stop) automatically when you open the
 project ; outside of VS Code, you can use `just` recipes (see
-[devcontainers.just](./devcontainers.just)).
+[devcontainers.just](./.recipes/devcontainers.just)
 
 Build time secrets are stored in `.devcontainer/env.local` ; run time secrets
 are stored in the `.env.local` file. Both files are not committed to the
@@ -53,7 +53,7 @@ The project is organized as follows:
 ├── setup.sh            # Optional, per user, git-untracked configuration
 src/
 ├── {{ project_name}}/  # {{ project_name | title }} package
-│   ├── init.py         # Package initialization
+│   ├── __init__.py     # Package initialization
 README.md               # Documentation root
 CHANGELOG.md            # Human readable list of changes
 justfile                # List of recipes
