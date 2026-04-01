@@ -13,6 +13,22 @@ repository, instead `.devcontainer/env` and `.env` files act as templates.
 To set up your development environment from the CLI, use `just
 devcontainer::up`.
 
+### Project lifecycle
+This project uses [`just`](https://just.systems/) as a command runner. Run `just`
+(or `just --list`) to see all available recipes. Key commands:
+
+| Command                       | Description                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------- |
+| `just setup`                  | Install dependencies, configure pre-commit hooks, and set up the dev environment  |
+| `just devcontainers::up`      | Build and start the dev container, then open a shell inside it                    |
+| `just devcontainers::stop`    | Stop the running dev container                                                    |
+| `just devcontainers::down`    | Remove the dev container                                                          |
+| `just template::update`       | Update the project from the latest copier template                                |
+| `just template::check-update` | Check whether a template update is available                                      |
+| `just release::check`         | Print unreleased commits and the proposed next version                            |
+| `just release::release`       | Interactively draft a release: bump version, update changelog, commit and tag     |
+| `just release::push`          | Push commits and tags to the remote                                               |
+
 ### Installing dependencies
 Install libraries from pypi using: `pdm add <LIB>`. The library will appear in
 [`pyproject.toml`](./pyproject.toml). You may specify a `--group` or a optional
