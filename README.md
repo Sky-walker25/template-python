@@ -30,7 +30,7 @@ copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git 
 
 3. Launch dev container
 
-Launch VS Code or run `just devcontainer:up` from your terminal.
+Launch VS Code or run `just devcontainers::up` from your terminal.
 
 ### Per user setup
 Some user have their own favorite configurations and tools. For this, the
