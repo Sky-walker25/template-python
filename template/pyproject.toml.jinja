@@ -1,6 +1,6 @@
 [project]
 name = "{{ project_name }}"
-version = "0.1.0"
+dynamic = ["version"]
 description = "{{ description }}"
 authors = [
     {name = "{{ author_name }}", email = "{{ author_email }}"},
@@ -28,6 +28,9 @@ build-backend = "setuptools.build_meta"
     cache_dir = "/tmp/cache/mypy/"
 
     [tool.setuptools]
+        [tool.setuptools.dynamic]
+        version = {attr = "{{ project_name }}.__version__"}
+
         [tool.setuptools.packages.find]
         where = ["src"]
 
