@@ -11,9 +11,13 @@ RUN apt update && apt install -y \
     ssh
 
 # Set locales
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
+RUN sed -i 's/^# \(C.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
+ && locale-gen \
+ && update-locale LANG=C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 
+# Install tools
 ENV PIPX_BIN_DIR=/usr/bin/
 RUN pipx install pdm && pipx install rust-just
 RUN pipx install copier && pipx inject copier copier-template-extensions
