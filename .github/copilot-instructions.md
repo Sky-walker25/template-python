@@ -44,6 +44,8 @@ This repository is a **Copier template** that generates standardized Python proj
 
 **Commits:** Follow conventional commits — `feat:`, `fix:`, `chore:`, `test:`, etc. git-cliff groups these into CHANGELOG sections. Release commits are formatted `chore(repo): release X.Y.Z`.
 
+**Co-authoring:** When adding a `Co-authored-by` trailer for Copilot, use `Co-authored-by: Copilot <Copilot@users.noreply.github.com>` — no numeric ID in the address.
+
 **Cache paths:** All tool caches go under `/tmp/cache/<tool>/` (mypy, ruff, pytest) — never committed.
 
 **Secrets:** `.env.local` and `.devcontainer/env.local` hold local secrets and are gitignored. `.devcontainer/setup.sh` (also gitignored) handles per-user container setup.

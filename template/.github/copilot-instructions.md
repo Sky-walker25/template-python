@@ -18,6 +18,12 @@ If your changes make any part of `README.md` inaccurate or incomplete (new
 commands, changed structure, updated conventions, …), update the README as part
 of the same task. The README must always reflect the actual state of the project.
 
+## Commits
+
+Follow conventional commits — `feat:`, `fix:`, `chore:`, `test:`, etc.
+
+**Co-authoring:** When adding a `Co-authored-by` trailer for Copilot, use `Co-authored-by: Copilot <Copilot@users.noreply.github.com>` — no numeric ID in the address.
+
 ## Tooling
 
 **`just` recipes are for users only.** Never invoke `just` recipes yourself.
