@@ -42,7 +42,7 @@ This repository is a **Copier template** that generates standardized Python proj
 
 **Copier variables:** `project_name`, `description`, `author_name`, `author_email`. Author fields default to values from `extensions.py:GitContext` (reads `git config user.name/email`).
 
-**Commits:** Follow conventional commits — `feat:`, `fix:`, `chore:`, `test:`, etc. git-cliff groups these into CHANGELOG sections. Release commits are formatted `chore(repo): release X.Y.Z`.
+**Commits:** Follow conventional commits — type(`feat:`, `fix:`, `chore:`, `test:`, etc) + optional scope + description starting with a verb (`add`, `remove`, `change`, `improve`, etc.).
 
 **Co-authoring:** When adding a `Co-authored-by` trailer for Copilot, use `Co-authored-by: Copilot <Copilot@users.noreply.github.com>` — no numeric ID in the address.
 

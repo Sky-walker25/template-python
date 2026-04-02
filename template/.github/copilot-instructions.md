@@ -20,7 +20,7 @@ of the same task. The README must always reflect the actual state of the project
 
 ## Commits
 
-Follow conventional commits — `feat:`, `fix:`, `chore:`, `test:`, etc.
+Follow conventional commits — type(`feat:`, `fix:`, `chore:`, `test:`, etc) + optional scope + description starting with a verb (`add`, `remove`, `change`, `improve`, etc.).
 
 **Co-authoring:** When adding a `Co-authored-by` trailer for Copilot, use `Co-authored-by: Copilot <Copilot@users.noreply.github.com>` — no numeric ID in the address.
 
