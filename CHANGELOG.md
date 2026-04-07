@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2026-04-07
+Improve compatibility with host and update the base image.
+
+### Changed
+- Set `$TERM` env variable to match host
+- Bump debian container image to trixie
+- Add `--no-install-recommends` to apt install
+- Use `--global` option for pipx
+- Detail commit style instructions
+- No numeric ID in Copilot co-author address
+- Dynamic version from project `__init__`
+
+### Fixed
+- Clean apt cache and remove package lists after install
+- Fix locales
+
+
 ## [0.5.0] - 2026-04-01
 Mix of fixes and improvements and a few new features.
 
