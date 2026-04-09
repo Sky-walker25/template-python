@@ -28,7 +28,7 @@ A pretty good dev container setup for python development.
 
 | Variable | Description | Default |
 |---|---|---|
-| `project_name` | Human-readable project display name | — |
+| `project_name` | Human-readable project display name | Copier's `destination_path` |
 | `package_name` | Python package identifier (auto-sanitized) | `project_name` lowercased, non-alphanumeric → `_` |
 | `description` | Short project description | — |
 | `author_name` | Author full name | `git config user.name` |
