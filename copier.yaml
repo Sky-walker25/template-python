@@ -9,6 +9,7 @@ _exclude:
 project_name:
     type: str
     help: Project name?
+    default: "{{ dst_folder_name }}"
 
 package_name:
     type: str

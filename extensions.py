@@ -40,4 +40,5 @@ class GitContext(ContextHook):
             ).strip()
         except subprocess.CalledProcessError:
             email = ""
-        return {"git_user_name": name, "git_user_email": email}
+        dst_folder_name = context["_copier_conf"]["dst_path"].name
+        return {"git_user_name": name, "git_user_email": email, "dst_folder_name": dst_folder_name}
