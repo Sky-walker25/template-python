@@ -19,9 +19,9 @@ release:
     git cliff --unreleased --tag "$version" --prepend CHANGELOG.md
     ${EDITOR:-vi} CHANGELOG.md
     # Bump __version__ in Python source
-    sed -i "s/__version__ = \".*\"/__version__ = \"$version\"/" src/{{project_name}}/__init__.py
+    sed -i "s/__version__ = \".*\"/__version__ = \"$version\"/" src/{{package_name}}/__init__.py
     # Commit and create a lightweight tag
-    git add CHANGELOG.md src/{{project_name}}/__init__.py
+    git add CHANGELOG.md src/{{package_name}}/__init__.py
     git commit -m "chore(repo): release $version"
     git tag "$version"
     echo ""

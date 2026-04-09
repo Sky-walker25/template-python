@@ -1,6 +1,7 @@
 _subdirectory: template
 _jinja_extensions:
     - copier_templates_extensions.TemplateExtensionLoader
+    - extensions.py:PackageNameFilter
     - extensions.py:GitContext
 _exclude:
     - extensions.py
@@ -8,6 +9,11 @@ _exclude:
 project_name:
     type: str
     help: Project name?
+
+package_name:
+    type: str
+    help: Python package name (valid PEP 508 identifier)?
+    default: "{{ project_name | to_package_name }}"
 
 description:
     type: str

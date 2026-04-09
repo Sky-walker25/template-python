@@ -1,7 +1,7 @@
 // -*- jsonc -*-
 // For format details, see https://containers.dev/implementors/json_reference/.
 {
-  "name": "devcontainer-{{ project_name }}",
+  "name": "devcontainer-{{ package_name }}",
   "build": {
     "dockerfile": "Containerfile"
   },
@@ -12,7 +12,7 @@
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}",
     "--hostname",
-    "{{ project_name }}"
+    "{{ package_name }}"
   ],
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "just setup",

@@ -20,7 +20,7 @@ A pretty good dev container setup for python development.
 │   │   ├── devcontainers.just
 │   │   ├── release.just.jinja
 │   │   └── template.just
-│   ├── src/{{project_name}}/  # Generated package (src layout)
+│   ├── src/{{package_name}}/  # Generated package (src layout)
 │   └── pyproject.toml.jinja   # Project metadata template
 ```
 
@@ -28,7 +28,8 @@ A pretty good dev container setup for python development.
 
 | Variable | Description | Default |
 |---|---|---|
-| `project_name` | Python package name | — |
+| `project_name` | Human-readable project display name | — |
+| `package_name` | Python package identifier (auto-sanitized) | `project_name` lowercased, non-alphanumeric → `_` |
 | `description` | Short project description | — |
 | `author_name` | Author full name | `git config user.name` |
 | `author_email` | Author e-mail address | `git config user.email` |

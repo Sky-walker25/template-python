@@ -1,5 +1,5 @@
 [project]
-name = "{{ project_name }}"
+name = "{{ package_name }}"
 dynamic = ["version"]
 description = "{{ description }}"
 authors = [
@@ -29,7 +29,7 @@ build-backend = "setuptools.build_meta"
 
     [tool.setuptools]
         [tool.setuptools.dynamic]
-        version = {attr = "{{ project_name }}.__version__"}
+        version = {attr = "{{ package_name }}.__version__"}
 
         [tool.setuptools.packages.find]
         where = ["src"]
