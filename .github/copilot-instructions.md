@@ -1,23 +1,5 @@
 # Copilot Instructions
 
-## README is the source of truth
-
-`README.md` describes the project structure, conventions, and workflow. It is
-the authoritative reference for any task performed in this repository.
-
-### Before starting a task
-Read `README.md` in full. Understand the project layout, tooling, and any rules
-that apply to the area you are about to change.
-
-### Before finishing a task
-Re-read `README.md` and verify your changes have not diverged from the rules and
-conventions described there (architecture, tooling, naming, workflow, etc.).
-
-### Keeping the README up to date
-If your changes make any part of `README.md` inaccurate or incomplete (new
-commands, changed structure, updated conventions, …), update the README as part
-of the same task. The README must always reflect the actual state of the project.
-
 This repository is a **Copier template** that generates standardized Python projects. The `template/` subdirectory is the actual template source; the root-level files configure and drive the template generation.
 
 ## Architecture
@@ -54,6 +36,16 @@ This repository is a **Copier template** that generates standardized Python proj
 
 **Type hints:** Required on all function signatures; checked by Mypy with `install-types` enabled.
 
-## Tooling
+## README is the source of truth
+Treat README.md as the authoritative reference for the repository conventions, structure and workflow.
+Before changing code, review the README sections relevant to your task.
+Before finishing, check whether your changes conflict with documented conventions or commands.
+If your change affects setup, structure, workflow, or commands described in the README, update the README in the same change.
+If the README conflicts with code, tests, or other repo instructions, follow the more specific or more authoritative source and note the discrepancy.
 
-**`just` recipes are for users only.** Never invoke `just` recipes yourself.
+## Commits
+Follow conventional commits — type(feat:, fix:, chore:, test:, etc) + optional scope + description starting with a verb (add, remove, change, improve, etc.).
+Co-authoring: When adding a Co-authored-by trailer for Copilot, use Co-authored-by: Copilot <Copilot@users.noreply.github.com> — no numeric ID in the address.
+
+## Tooling
+just recipes are for users only. Never invoke just recipes yourself.
