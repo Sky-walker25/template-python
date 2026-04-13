@@ -59,6 +59,19 @@ marker = "\"dev\" in dependency_groups"
 dependencies = []
 
 [[packages]]
+name = "python-dotenv"
+version = "1.2.2"
+requires-python = ">=3.10"
+sdist = {name = "python_dotenv-1.2.2.tar.gz", url = "https://files.pythonhosted.org/packages/82/ed/0301aeeac3e5353ef3d94b6ec08bbcabd04a72018415dcb29e588514bba8/python_dotenv-1.2.2.tar.gz", hashes = {sha256 = "2c371a91fbd7ba082c2c1dc1f8bf89ca22564a087c2c287cd9b662adde799cf3"}}
+wheels = [
+    {name = "python_dotenv-1.2.2-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/0b/d7/1959b9648791274998a9c3526f6d0ec8fd2233e4d4acce81bbae76b44b2a/python_dotenv-1.2.2-py3-none-any.whl",hashes = {sha256 = "1d8214789a24de455a8b8bd8ae6fe3c6b69a5e3d64aa8a8e5d68e694bbcb285a"}},
+]
+marker = "\"default\" in dependency_groups"
+
+[packages.tool.pdm]
+dependencies = []
+
+[[packages]]
 name = "mypy"
 version = "1.20.0"
 requires-python = ">=3.10"
