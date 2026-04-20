@@ -1,4 +1,4 @@
-# Copilot Instructions
+# Instructions
 
 ## README is the source of truth
 Treat README.md as the authoritative reference for the repository conventions, structure and workflow.
@@ -9,7 +9,6 @@ If the README conflicts with code, tests, or other repo instructions, follow the
 
 ## Commits
 Follow conventional commits — type(feat:, fix:, chore:, test:, etc) + optional scope + description starting with a verb (add, remove, change, improve, etc.).
-Co-authoring: When adding a Co-authored-by trailer for Copilot, use Co-authored-by: Copilot <Copilot@users.noreply.github.com> — no numeric ID in the address.
 
 ## Tooling
 just recipes are for users only. Never invoke just recipes yourself.

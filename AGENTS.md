@@ -1,4 +1,4 @@
-# Copilot Instructions
+# Instructions
 
 This repository is a **Copier template** that generates standardized Python projects. The `template/` subdirectory is the actual template source; the root-level files configure and drive the template generation.
 
@@ -26,8 +26,6 @@ This repository is a **Copier template** that generates standardized Python proj
 
 **Commits:** Follow conventional commits — type(`feat:`, `fix:`, `chore:`, `test:`, etc) + optional scope + description starting with a verb (`add`, `remove`, `change`, `improve`, etc.).
 
-**Co-authoring:** When adding a `Co-authored-by` trailer for Copilot, use `Co-authored-by: Copilot <Copilot@users.noreply.github.com>` — no numeric ID in the address.
-
 **Cache paths:** All tool caches go under `/tmp/cache/<tool>/` (mypy, ruff, pytest) — never committed.
 
 **Secrets:** `.env.local` and `.devcontainer/env.local` hold local secrets and are gitignored. `.devcontainer/setup.sh` (also gitignored) handles per-user container setup.
@@ -45,7 +43,6 @@ If the README conflicts with code, tests, or other repo instructions, follow the
 
 ## Commits
 Follow conventional commits — type(feat:, fix:, chore:, test:, etc) + optional scope + description starting with a verb (add, remove, change, improve, etc.).
-Co-authoring: When adding a Co-authored-by trailer for Copilot, use Co-authored-by: Copilot <Copilot@users.noreply.github.com> — no numeric ID in the address.
 
 ## Tooling
 just recipes are for users only. Never invoke just recipes yourself.
