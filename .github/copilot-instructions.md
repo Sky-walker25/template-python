@@ -12,7 +12,7 @@ This repository is a **Copier template** that generates standardized Python proj
 ├── template/            # Actual Copier template source
 │   ├── .devcontainer/   # Dev container with Python 3.11, PDM, Just, Copier pre-installed
 │   ├── .recipes/        # Just recipe modules copied into generated projects
-│   ├── src/{{project_name}}/  # Generated package (src layout)
+│   ├── src/{{package_name}}/  # Generated package (src layout)
 │   └── pyproject.toml.jinja   # Project metadata template
 ```
 
@@ -32,7 +32,7 @@ This repository is a **Copier template** that generates standardized Python proj
 
 **Secrets:** `.env.local` and `.devcontainer/env.local` hold local secrets and are gitignored. `.devcontainer/setup.sh` (also gitignored) handles per-user container setup.
 
-**Generated project src layout:** Packages live in `src/<project_name>/` and include a `py.typed` marker (PEP 561). Python version is pinned to `==3.11.*`.
+**Generated project src layout:** Packages live in `src/<package_name>/` and include a `py.typed` marker (PEP 561). Python version is pinned to `==3.11.*`.
 
 **Type hints:** Required on all function signatures; checked by Mypy with `install-types` enabled.
 
