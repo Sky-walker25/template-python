@@ -3,28 +3,13 @@
 A pretty good dev container setup for python development.
 
 ## Features
-- All python packages are installed in the container. They do not leak into the host file system.
-- Tokens are made available for build time (access to gitlab).
+- All python packages are installed in the container in `/venv/`. They do not leak into the host file system.
+- Tokens are made available for build time and development separately.
 - Environment is setup after the workspace is mounted on first build. This is used for installing requirements, setting-up mypy, pre-commits, etc.
     - Includes local, per-user setup script.
+- When launched through the `devcontainer` CLI, the container executes the shell currently used in the host, as indicated by the `$SHELL` environment variable (fallback to `bash`).
 
-## Repository layout
-
-```
-├── copier.yaml          # Template config: prompts, tasks, Jinja extensions
-├── extensions.py        # Jinja ContextHook — injects git_user_name / git_user_email
-├── cliff.toml           # git-cliff config for CHANGELOG generation (conventional commits)
-├── template/            # Actual Copier template source
-│   ├── .devcontainer/   # Dev container definition (Containerfile, devcontainer.json)
-│   ├── .recipes/        # Just recipe modules copied into generated projects
-│   │   ├── devcontainers.just
-│   │   ├── release.just.jinja
-│   │   └── template.just
-│   ├── src/{{package_name}}/  # Generated package (src layout)
-│   └── pyproject.toml.jinja   # Project metadata template
-```
-
-### Copier variables
+### Template variables
 
 | Variable | Description | Default |
 |---|---|---|
@@ -34,8 +19,8 @@ A pretty good dev container setup for python development.
 | `author_name` | Author full name | `git config user.name` |
 | `author_email` | Author e-mail address | `git config user.email` |
 
-## Setup
-1. Install `copier`
+## Usage
+1. Install `copier` and `git`.
 
 [`copier`](https://copier.readthedocs.io/en/latest/) is a CLI app for rendering
 project templates. I recommend installing it via `pipx`, although any tool
@@ -46,9 +31,7 @@ pipx install copier
 pipx inject copier copier-template-extensions
 ```
 
-2. Create a project from the template
-
-Run:
+2. Create a project from the template. Run:
 
 ```bash
 copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
@@ -68,18 +51,8 @@ Some user have their own favorite configurations and tools. For this, the
 `setup` just recipe includes executing the `.devcontainer/setup.sh` script if
 it exists. This script is not versioned so that each user may edit it freely.
 
-## Shell
-When launched through the `devcontainer` CLI, the container executes the shell currently used in the host, as indicated by the `$SHELL` environment variable (fallback to `bash`).
-
-
-## Container management
-When using VS Code, it handles most container related tasks: building, mounting essentials configurations, executing commands, etc. Outside, a `devcontainers.just` module contains most useful recipes.
-
-### Container
-The container name is defined in both `devcontainer.json` and `devcontainers.just` as the equivalent of `"devcontainer-${basename $pwd}"`.
-
-## Python
-The python environment is created in `/venv`. Mypy, Ruff and Pytest have their cache located in `/tmp/cache/<tool>/` (set in `pyproject.toml`).
+### Container management
+When using VS Code, it handles most container related tasks: building, mounting essentials configurations, executing commands, etc. Outside, a `devcontainers.just` module contains most useful recipes. The container name is defined in both `devcontainer.json` and `devcontainers.just` as the equivalent of `"devcontainer-${basename $pwd}"`.
 
 ### Package manager — PDM
 
@@ -102,3 +75,20 @@ pdm sync --group :all      # install / sync all groups
 
 All three are installed as dev dependencies and configured in `pyproject.toml`.
 Type hints are required on all function signatures.
+
+## Development
+### Repository layout
+
+```
+├── copier.yaml          # Template config: prompts, tasks, Jinja extensions
+├── extensions.py        # Jinja ContextHook — injects git_user_name / git_user_email
+├── cliff.toml           # git-cliff config for CHANGELOG generation (conventional commits)
+├── template/            # Actual Copier template source
+│   ├── .devcontainer/   # Dev container definition (Containerfile, devcontainer.json)
+│   ├── .recipes/        # Just recipe modules copied into generated projects
+│   │   ├── devcontainers.just
+│   │   ├── release.just.jinja
+│   │   └── template.just
+│   ├── src/{{package_name}}/  # Generated package (src layout)
+│   └── pyproject.toml.jinja   # Project metadata template
+```
