@@ -20,7 +20,6 @@
   "remoteEnv": {
     "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
     "TERM": "${localEnv:TERM}"
-
   },
   // Mount SSH agent
   "mounts": [
