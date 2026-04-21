@@ -17,6 +17,7 @@ dev = [
     "mypy[install-types]>=1.19.1",
     "pre-commit>=4.2.0",
     "ruff>=0.15.6",
+    "black>=26.3.1",
 ]
 
 [build-system]
@@ -42,6 +43,3 @@ build-backend = "setuptools.build_meta"
 
     [tool.ruff]
     cache-dir = "/tmp/cache/ruff/"
-
-    [tool.pytest.ini_options]
-    cache_dir = "/tmp/cache/pytest/"
