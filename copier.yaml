@@ -35,5 +35,3 @@ _tasks:
     # Initialize git repository and make initial commit
     - "git init"
     - "git add . && git commit -m 'chore(repo): Setup project structure'"
-    # Create local env file
-    - "cp .env .env.local && cp .devcontainer/env .devcontainer/env.local"
