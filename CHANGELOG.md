@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-04-23
+
+### Added
+- Add python-dotenv dependency
+- Add black to dev dependencies
+- Set default `project_name` from destination folder name
+- Add package_name variable with auto-sanitization
+- Add pylock.toml
+
+### Changed
+- Add --vcs-ref=HEAD indication
+- Move instructions to standard AGENTS.md
+- Pin ruff check to the same version of pyproject
+- Do not include any particular env variable
+- Rename `Setup` to `Development` in README
+- Update mypy
+- Update license naming
+- Clean up instructions
+
+### Fixed
+- Fix isort - black interactions
+- Add missing comma in runArgs
+
+### Removed
+- Remove copilot centric instructions
+- Remove copy env task
+
+
 ## [0.5.1] - 2026-04-07
 Improve compatibility with host and update the base image.
 
