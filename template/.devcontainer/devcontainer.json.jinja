@@ -9,6 +9,8 @@
   "features": {},
   // Set variables during build process
   "runArgs": [
+    "--env-file",
+    ".devcontainer/env.local",
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}",
     "--hostname",
