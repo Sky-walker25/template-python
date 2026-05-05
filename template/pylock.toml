@@ -11,6 +11,33 @@ default-groups = ["default"]
 created-by = "pdm"
 
 [[packages]]
+name = "black"
+version = "26.3.1"
+requires-python = ">=3.10"
+sdist = {name = "black-26.3.1.tar.gz", url = "https://files.pythonhosted.org/packages/e1/c5/61175d618685d42b005847464b8fb4743a67b1b8fdb75e50e5a96c31a27a/black-26.3.1.tar.gz", hashes = {sha256 = "2c50f5063a9641c7eed7795014ba37b0f5fa227f3d408b968936e24bc0566b07"}}
+wheels = [
+    {name = "black-26.3.1-cp311-cp311-macosx_10_9_x86_64.whl",url = "https://files.pythonhosted.org/packages/17/57/5f11c92861f9c92eb9dddf515530bc2d06db843e44bdcf1c83c1427824bc/black-26.3.1-cp311-cp311-macosx_10_9_x86_64.whl",hashes = {sha256 = "28ef38aee69e4b12fda8dba75e21f9b4f979b490c8ac0baa7cb505369ac9e1ff"}},
+    {name = "black-26.3.1-cp311-cp311-macosx_11_0_arm64.whl",url = "https://files.pythonhosted.org/packages/54/aa/340a1463660bf6831f9e39646bf774086dbd8ca7fc3cded9d59bbdf4ad0a/black-26.3.1-cp311-cp311-macosx_11_0_arm64.whl",hashes = {sha256 = "bf9bf162ed91a26f1adba8efda0b573bc6924ec1408a52cc6f82cb73ec2b142c"}},
+    {name = "black-26.3.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",url = "https://files.pythonhosted.org/packages/f3/01/b726c93d717d72733da031d2de10b92c9fa4c8d0c67e8a8a372076579279/black-26.3.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",hashes = {sha256 = "474c27574d6d7037c1bc875a81d9be0a9a4f9ee95e62800dab3cfaadbf75acd5"}},
+    {name = "black-26.3.1-cp311-cp311-win_amd64.whl",url = "https://files.pythonhosted.org/packages/e3/09/61e91881ca291f150cfc9eb7ba19473c2e59df28859a11a88248b5cbbc4d/black-26.3.1-cp311-cp311-win_amd64.whl",hashes = {sha256 = "5e9d0d86df21f2e1677cc4bd090cd0e446278bcbbe49bf3659c308c3e402843e"}},
+    {name = "black-26.3.1-cp311-cp311-win_arm64.whl",url = "https://files.pythonhosted.org/packages/16/73/544f23891b22e7efe4d8f812371ab85b57f6a01b2fc45e3ba2e52ba985b8/black-26.3.1-cp311-cp311-win_arm64.whl",hashes = {sha256 = "9a5e9f45e5d5e1c5b5c29b3bd4265dcc90e8b92cf4534520896ed77f791f4da5"}},
+    {name = "black-26.3.1-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/8e/0d/52d98722666d6fc6c3dd4c76df339501d6efd40e0ff95e6186a7b7f0befd/black-26.3.1-py3-none-any.whl",hashes = {sha256 = "2bd5aa94fc267d38bb21a70d7410a89f1a1d318841855f698746f8e7f51acd1b"}},
+]
+marker = "\"dev\" in dependency_groups"
+
+[packages.tool.pdm]
+dependencies = [
+    "click>=8.0.0",
+    "mypy-extensions>=0.4.3",
+    "packaging>=22.0",
+    "pathspec>=1.0.0",
+    "platformdirs>=2",
+    "pytokens~=0.4.0",
+    "tomli>=1.1.0; python_version < \"3.11\"",
+    "typing-extensions>=4.0.1; python_version < \"3.11\"",
+]
+
+[[packages]]
 name = "pre-commit"
 version = "4.5.1"
 requires-python = ">=3.10"
@@ -72,52 +99,39 @@ marker = "\"dev\" in dependency_groups"
 dependencies = []
 
 [[packages]]
-name = "black"
-version = "26.3.1"
-requires-python = ">=3.10"
-sdist = {name = "black-26.3.1.tar.gz", url = "https://files.pythonhosted.org/packages/e1/c5/61175d618685d42b005847464b8fb4743a67b1b8fdb75e50e5a96c31a27a/black-26.3.1.tar.gz", hashes = {sha256 = "2c50f5063a9641c7eed7795014ba37b0f5fa227f3d408b968936e24bc0566b07"}}
+name = "isort"
+version = "8.0.1"
+requires-python = ">=3.10.0"
+sdist = {name = "isort-8.0.1.tar.gz", url = "https://files.pythonhosted.org/packages/ef/7c/ec4ab396d31b3b395e2e999c8f46dec78c5e29209fac49d1f4dace04041d/isort-8.0.1.tar.gz", hashes = {sha256 = "171ac4ff559cdc060bcfff550bc8404a486fee0caab245679c2abe7cb253c78d"}}
 wheels = [
-    {name = "black-26.3.1-cp311-cp311-macosx_10_9_x86_64.whl",url = "https://files.pythonhosted.org/packages/17/57/5f11c92861f9c92eb9dddf515530bc2d06db843e44bdcf1c83c1427824bc/black-26.3.1-cp311-cp311-macosx_10_9_x86_64.whl",hashes = {sha256 = "28ef38aee69e4b12fda8dba75e21f9b4f979b490c8ac0baa7cb505369ac9e1ff"}},
-    {name = "black-26.3.1-cp311-cp311-macosx_11_0_arm64.whl",url = "https://files.pythonhosted.org/packages/54/aa/340a1463660bf6831f9e39646bf774086dbd8ca7fc3cded9d59bbdf4ad0a/black-26.3.1-cp311-cp311-macosx_11_0_arm64.whl",hashes = {sha256 = "bf9bf162ed91a26f1adba8efda0b573bc6924ec1408a52cc6f82cb73ec2b142c"}},
-    {name = "black-26.3.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",url = "https://files.pythonhosted.org/packages/f3/01/b726c93d717d72733da031d2de10b92c9fa4c8d0c67e8a8a372076579279/black-26.3.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",hashes = {sha256 = "474c27574d6d7037c1bc875a81d9be0a9a4f9ee95e62800dab3cfaadbf75acd5"}},
-    {name = "black-26.3.1-cp311-cp311-win_amd64.whl",url = "https://files.pythonhosted.org/packages/e3/09/61e91881ca291f150cfc9eb7ba19473c2e59df28859a11a88248b5cbbc4d/black-26.3.1-cp311-cp311-win_amd64.whl",hashes = {sha256 = "5e9d0d86df21f2e1677cc4bd090cd0e446278bcbbe49bf3659c308c3e402843e"}},
-    {name = "black-26.3.1-cp311-cp311-win_arm64.whl",url = "https://files.pythonhosted.org/packages/16/73/544f23891b22e7efe4d8f812371ab85b57f6a01b2fc45e3ba2e52ba985b8/black-26.3.1-cp311-cp311-win_arm64.whl",hashes = {sha256 = "9a5e9f45e5d5e1c5b5c29b3bd4265dcc90e8b92cf4534520896ed77f791f4da5"}},
-    {name = "black-26.3.1-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/8e/0d/52d98722666d6fc6c3dd4c76df339501d6efd40e0ff95e6186a7b7f0befd/black-26.3.1-py3-none-any.whl",hashes = {sha256 = "2bd5aa94fc267d38bb21a70d7410a89f1a1d318841855f698746f8e7f51acd1b"}},
+    {name = "isort-8.0.1-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/3e/95/c7c34aa53c16353c56d0b802fba48d5f5caa2cdee7958acbcb795c830416/isort-8.0.1-py3-none-any.whl",hashes = {sha256 = "28b89bc70f751b559aeca209e6120393d43fbe2490de0559662be7a9787e3d75"}},
 ]
 marker = "\"dev\" in dependency_groups"
 
 [packages.tool.pdm]
-dependencies = [
-    "click>=8.0.0",
-    "mypy-extensions>=0.4.3",
-    "packaging>=22.0",
-    "pathspec>=1.0.0",
-    "platformdirs>=2",
-    "pytokens~=0.4.0",
-    "tomli>=1.1.0; python_version < \"3.11\"",
-    "typing-extensions>=4.0.1; python_version < \"3.11\"",
-]
+dependencies = []
 
 [[packages]]
 name = "mypy"
-version = "1.20.1"
+version = "1.20.2"
 requires-python = ">=3.10"
-sdist = {name = "mypy-1.20.1.tar.gz", url = "https://files.pythonhosted.org/packages/0b/3d/5b373635b3146264eb7a68d09e5ca11c305bbb058dfffbb47c47daf4f632/mypy-1.20.1.tar.gz", hashes = {sha256 = "6fc3f4ecd52de81648fed1945498bf42fa2993ddfad67c9056df36ae5757f804"}}
+sdist = {name = "mypy-1.20.2.tar.gz", url = "https://files.pythonhosted.org/packages/04/af/e3d4b3e9ec91a0ff9aabfdb38692952acf49bbb899c2e4c29acb3a6da3ae/mypy-1.20.2.tar.gz", hashes = {sha256 = "e8222c26daaafd9e8626dec58ae36029f82585890589576f769a650dd20fd665"}}
 wheels = [
-    {name = "mypy-1.20.1-cp311-cp311-macosx_10_9_x86_64.whl",url = "https://files.pythonhosted.org/packages/82/0d/555ab7453cc4a4a8643b7f21c842b1a84c36b15392061ae7b052ee119320/mypy-1.20.1-cp311-cp311-macosx_10_9_x86_64.whl",hashes = {sha256 = "c01eb9bac2c6a962d00f9d23421cd2913840e65bba365167d057bd0b4171a92e"}},
-    {name = "mypy-1.20.1-cp311-cp311-macosx_11_0_arm64.whl",url = "https://files.pythonhosted.org/packages/57/26/85a28893f7db8a16ebb41d1e9dfcb4475844d06a88480b6639e32a74d6ef/mypy-1.20.1-cp311-cp311-macosx_11_0_arm64.whl",hashes = {sha256 = "55d12ddbd8a9cac5b276878bd534fa39fff5bf543dc6ae18f25d30c8d7d27fca"}},
-    {name = "mypy-1.20.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",url = "https://files.pythonhosted.org/packages/93/41/bd4cd3c2caeb6c448b669222b8cfcbdee4a03b89431527b56fca9e56b6f3/mypy-1.20.1-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",hashes = {sha256 = "c0aa322c1468b6cdfc927a44ce130f79bb44bcd34eb4a009eb9f96571fd80955"}},
-    {name = "mypy-1.20.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",url = "https://files.pythonhosted.org/packages/3e/56/7ee8c471e10402d64b6517ae10434541baca053cffd81090e4097d5609d4/mypy-1.20.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",hashes = {sha256 = "3f8bc95899cf676b6e2285779a08a998cc3a7b26f1026752df9d2741df3c79e8"}},
-    {name = "mypy-1.20.1-cp311-cp311-musllinux_1_2_x86_64.whl",url = "https://files.pythonhosted.org/packages/b5/95/b37d1fa859a433f6156742e12f62b0bb75af658544fb6dada9363918743a/mypy-1.20.1-cp311-cp311-musllinux_1_2_x86_64.whl",hashes = {sha256 = "47c2b90191a870a04041e910277494b0d92f0711be9e524d45c074fe60c00b65"}},
-    {name = "mypy-1.20.1-cp311-cp311-win_amd64.whl",url = "https://files.pythonhosted.org/packages/03/77/b302e4cb0b80d2bdf6bf4fce5864bb4cbfa461f7099cea544eaf2457df78/mypy-1.20.1-cp311-cp311-win_amd64.whl",hashes = {sha256 = "9857dc8d2ec1a392ffbda518075beb00ac58859979c79f9e6bdcb7277082c2f2"}},
-    {name = "mypy-1.20.1-cp311-cp311-win_arm64.whl",url = "https://files.pythonhosted.org/packages/7f/21/d969d7a68eb964993ebcc6170d5ecaf0cf65830c58ac3344562e16dc42a9/mypy-1.20.1-cp311-cp311-win_arm64.whl",hashes = {sha256 = "09d8df92bb25b6065ab91b178da843dda67b33eb819321679a6e98a907ce0e10"}},
-    {name = "mypy-1.20.1-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/d8/28/926bd972388e65a39ee98e188ccf67e81beb3aacfd5d6b310051772d974b/mypy-1.20.1-py3-none-any.whl",hashes = {sha256 = "1aae28507f253fe82d883790d1c0a0d35798a810117c88184097fe8881052f06"}},
+    {name = "mypy-1.20.2-cp311-cp311-macosx_10_9_x86_64.whl",url = "https://files.pythonhosted.org/packages/1f/4d/9ebeae211caccbdaddde7ed5e31dfcf57faac66be9b11deb1dc6526c8078/mypy-1.20.2-cp311-cp311-macosx_10_9_x86_64.whl",hashes = {sha256 = "4077797a273e56e8843d001e9dfe4ba10e33323d6ade647ff260e5cd97d9758c"}},
+    {name = "mypy-1.20.2-cp311-cp311-macosx_11_0_arm64.whl",url = "https://files.pythonhosted.org/packages/95/d7/93473d34b61f04fac1aecc01368485c89c5c4af7a4b9a0cab5d77d04b63f/mypy-1.20.2-cp311-cp311-macosx_11_0_arm64.whl",hashes = {sha256 = "cdecf62abcc4292500d7858aeae87a1f8f1150f4c4dd08fb0b336ee79b2a6df3"}},
+    {name = "mypy-1.20.2-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",url = "https://files.pythonhosted.org/packages/e2/30/3dd903e8bafb7b5f7bf87fcd58f8382086dea2aa19f0a7b357f21f63071b/mypy-1.20.2-cp311-cp311-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl",hashes = {sha256 = "c566c3a88b6ece59b3d70f65bedef17304f48eb52ff040a6a18214e1917b3254"}},
+    {name = "mypy-1.20.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",url = "https://files.pythonhosted.org/packages/07/05/c61a140aba4c729ac7bc99ae26fc627c78a6e08f5b9dd319244ea71a3d7e/mypy-1.20.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",hashes = {sha256 = "0deb80d062b2479f2c87ae568f89845afc71d11bc41b04179e58165fd9f31e98"}},
+    {name = "mypy-1.20.2-cp311-cp311-musllinux_1_2_x86_64.whl",url = "https://files.pythonhosted.org/packages/fd/87/da78243742ffa8a36d98c3010f0d829f93d5da4e6786f1a1a6f2ad616502/mypy-1.20.2-cp311-cp311-musllinux_1_2_x86_64.whl",hashes = {sha256 = "bba9ad231e92a3e424b3e56b65aa17704993425bba97e302c832f9466bb85bac"}},
+    {name = "mypy-1.20.2-cp311-cp311-win_amd64.whl",url = "https://files.pythonhosted.org/packages/37/52/10a1ddf91b40f843943a3c6db51e2df59c9e237f29d355e95eaab427461f/mypy-1.20.2-cp311-cp311-win_amd64.whl",hashes = {sha256 = "baf593f2765fa3a6b1ef95807dbaa3d25b594f6a52adcc506a6b9cb115e1be67"}},
+    {name = "mypy-1.20.2-cp311-cp311-win_arm64.whl",url = "https://files.pythonhosted.org/packages/20/02/f9a4415b664c53bd34d6709be59da303abcae986dc4ac847b402edb6fa1e/mypy-1.20.2-cp311-cp311-win_arm64.whl",hashes = {sha256 = "20175a1c0f49863946ec20b7f63255768058ac4f07d2b9ded6a6b46cfb5a9100"}},
+    {name = "mypy-1.20.2-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/28/9a/f23c163e25b11074188251b0b5a0342625fc1cdb6af604757174fa9acc9b/mypy-1.20.2-py3-none-any.whl",hashes = {sha256 = "a94c5a76ab46c5e6257c7972b6c8cff0574201ca7dc05647e33e795d78680563"}},
 ]
 marker = "\"dev\" in dependency_groups"
 
 [packages.tool.pdm]
 dependencies = [
-    "typing-extensions>=4.6.0",
+    "typing-extensions>=4.6.0; python_version < \"3.15\"",
+    "typing-extensions>=4.14.0; python_version >= \"3.15\"",
     "mypy-extensions>=1.0.0",
     "pathspec>=1.0.0",
     "tomli>=1.1.0; python_version < \"3.11\"",
@@ -302,7 +316,7 @@ sdist = {name = "typing_extensions-4.15.0.tar.gz", url = "https://files.pythonho
 wheels = [
     {name = "typing_extensions-4.15.0-py3-none-any.whl",url = "https://files.pythonhosted.org/packages/18/67/36e9267722cc04a6b9f15c7f3441c2363321a3ea07da7ae0c0707beb2a9c/typing_extensions-4.15.0-py3-none-any.whl",hashes = {sha256 = "f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"}},
 ]
-marker = "\"dev\" in dependency_groups"
+marker = "python_version < \"3.15\" and \"dev\" in dependency_groups"
 
 [packages.tool.pdm]
 dependencies = []
@@ -396,7 +410,7 @@ marker = "\"dev\" in dependency_groups"
 dependencies = []
 
 [tool.pdm]
-hashes = {sha256 = "5ae3ac6e9d32b1d937726451c5d25d4ba2e76abb566181cd8b9284543102fd9f"}
+hashes = {sha256 = "fd99ece3b0ba5c8b1c566c1a230c650152cc3bc332b70ac8e4c31d74758d332e"}
 strategy = ["inherit_metadata", "static_urls"]
 
 [[tool.pdm.targets]]
