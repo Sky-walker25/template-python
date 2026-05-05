@@ -1,6 +1,6 @@
 # Python template
 
-A pretty good dev container setup for python development.
+A pretty good dev container setup for python development. Check [rendered template](https://git.zagouri.org/templates/python-demo).
 
 ## Features
 - All python packages are installed in the container in `/venv/`. They do not leak into the host file system.
