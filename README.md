@@ -40,6 +40,12 @@ copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git 
 Copier runs three post-copy tasks: `git init`, an initial commit, and copying
 `.env` → `.env.local`.
 
+To adapt an existing project to the template, run:
+
+```bash
+copier copy --trust --skip-tasks git@gitlab.accenta.ai:accenta/recherche/template-python.git .
+```
+
 Optionally, add `--vcs-ref=HEAD` to the `copier copy` command to use the latest commit from the repo, instead of the latest release (default).
 
 3. Launch dev container
