@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.2] - 2026-05-12
+Improve documentation, remove unused VS Code configuration entry.
+
+### Added
+- Add link to rendered template
+- Add instruction for adapting existing project
+
+### Removed
+- Remove default interpreter path from devcontainer settings
+
+
 ## [0.6.1] - 2026-05-05
 Fix missing `isort` in python dev dependencies.
 
