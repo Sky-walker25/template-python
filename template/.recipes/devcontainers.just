@@ -9,6 +9,7 @@ default:
     @just --list --justfile {{justfile()}}
 
 build:
+    [ -f .devcontainer/env.local ] || cp .devcontainer/env .devcontainer/env.local
     devcontainer up {{args}}
 
 up: build
