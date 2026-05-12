@@ -1,11 +1,11 @@
-FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 # Install development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
+    gcc \
     git \
     locales \
-    make \
     pipx \
     ssh \
  && apt-get clean \
@@ -18,9 +18,12 @@ RUN sed -i 's/^# \(C.UTF-8 UTF-8\)/\1/' /etc/locale.gen \
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 
-# Install tools
-ENV PIPX_BIN_DIR=/usr/bin/
-RUN pipx install rust-just
-RUN pipx install copier && pipx inject copier copier-template-extensions
-RUN pipx install git-cliff
-RUN pipx install pre-commit
+# Use --global to make package available to all users
+RUN pipx install --global rust-just
+RUN pipx install --global copier && pipx inject --global copier copier-template-extensions
+RUN pipx install --global git-cliff
+RUN pipx install --global pre-commit
+
+# Create user
+RUN groupadd --gid 1000 worker \
+    && useradd --create-home --uid 1000 --gid 1000 worker

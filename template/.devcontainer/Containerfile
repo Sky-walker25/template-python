@@ -3,11 +3,10 @@ FROM docker.io/python:3.11.15-slim-trixie
 # Install development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
+    gcc \
     git \
     locales \
-    make \
     pipx \
-    ripgrep \
     ssh \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
@@ -25,6 +24,12 @@ RUN pipx install --global rust-just
 RUN pipx install --global copier && pipx inject --global copier copier-template-extensions
 RUN pipx install --global git-cliff
 
+# Create user
+RUN groupadd --gid 1000 worker \
+    && useradd --create-home --uid 1000 --gid 1000 worker
+
 # Setup virtual env
-RUN python -m venv /venv
+RUN python -m venv /venv && chown -R worker:worker /venv
+
+USER worker
 RUN echo "source /venv/bin/activate" >> ~/.bashrc

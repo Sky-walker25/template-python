@@ -7,8 +7,14 @@
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {},
+  // Handle user namespace mapping
+  "remoteUser": "worker",
+  "containerUser": "worker",
+  "updateRemoteUserUID": false,
   // Set variables during build process
   "runArgs": [
+    "--userns",
+    "keep-id:uid=1000,gid=1000",
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}",
     "--hostname",
