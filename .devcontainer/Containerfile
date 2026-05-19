@@ -2,6 +2,7 @@ FROM debian:trixie-slim
 
 # Install development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
     curl \
     gcc \
     git \
