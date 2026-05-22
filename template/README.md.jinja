@@ -29,6 +29,13 @@ This project uses [`just`](https://just.systems/) as a command runner. Run `just
 | `just release::release`       | Interactively draft a release: bump version, update changelog, commit and tag     |
 | `just release::push`          | Push commits and tags to the remote                                               |
 
+On Windows, Copier commands must target the template's `windows` branch
+explicitly. For a manual template update, run:
+
+```bash
+copier update --trust --skip-answered --skip-tasks --vcs-ref=windows
+```
+
 ### Installing dependencies
 Install libraries from pypi using: `pdm add <LIB>`. The library will appear in
 [`pyproject.toml`](./pyproject.toml). You may specify a `--group` or a optional

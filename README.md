@@ -37,6 +37,12 @@ pipx inject copier copier-template-extensions
 copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
 ```
 
+Windows users must explicitly copy from the `windows` branch:
+
+```bash
+copier copy --trust --vcs-ref=windows git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
+```
+
 Copier runs three post-copy Git tasks: `git init`, `git add .`, and an initial
 commit.
 
@@ -46,7 +52,15 @@ To adapt an existing project to the template, run:
 copier copy --trust --skip-tasks git@gitlab.accenta.ai:accenta/recherche/template-python.git .
 ```
 
-Optionally, add `--vcs-ref=HEAD` to the `copier copy` command to use the latest commit from the repo, instead of the latest release (default).
+On Windows, also add `--vcs-ref=windows`:
+
+```bash
+copier copy --trust --skip-tasks --vcs-ref=windows git@gitlab.accenta.ai:accenta/recherche/template-python.git .
+```
+
+Optionally, add `--vcs-ref=HEAD` to the `copier copy` command to use the latest
+commit from the repo, instead of the latest release (default). Windows users
+should use `--vcs-ref=windows` instead.
 
 3. Launch dev container
 
