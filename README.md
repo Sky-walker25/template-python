@@ -37,8 +37,8 @@ pipx inject copier copier-template-extensions
 copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
 ```
 
-Copier runs three post-copy tasks: `git init`, an initial commit, and copying
-`.env` → `.env.local`.
+Copier runs three post-copy Git tasks: `git init`, `git add .`, and an initial
+commit.
 
 To adapt an existing project to the template, run:
 

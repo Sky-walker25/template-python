@@ -16,7 +16,7 @@ This repository is a **Copier template** that generates standardized Python proj
 │   └── pyproject.toml.jinja   # Project metadata template
 ```
 
-`copier.yaml` points at `template/` as the subdirectory, excludes `extensions.py` from output, and runs three post-copy tasks: `git init`, initial commit, and copying `.env` → `.env.local`.
+`copier.yaml` points at `template/` as the subdirectory, excludes `extensions.py` from output, and runs three post-copy Git tasks: `git init`, `git add .`, and the initial commit.
 
 ## Conventions
 

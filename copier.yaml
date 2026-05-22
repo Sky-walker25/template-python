@@ -33,5 +33,6 @@ author_email:
 
 _tasks:
     # Initialize git repository and make initial commit
-    - "git init"
-    - "git add . && git commit -m 'chore(repo): Setup project structure'"
+    - ["git", "init"]
+    - ["git", "add", "."]
+    - ["git", "commit", "-m", "chore(repo): Setup project structure"]
