@@ -63,7 +63,7 @@ should use `--vcs-ref=windows` instead.
 
 3. Launch dev container
 
-Launch VS Code or run `just devcontainers::up` from your terminal (execute the current `$SHELL` or fallback to `bash`).
+Launch VS Code or run `just devcontainers::up` from your terminal (executes the current `$SHELL` or fallback to `bash`).
 
 ### Per user setup
 Some user have their own favorite configurations and tools. For this, the
@@ -71,10 +71,9 @@ Some user have their own favorite configurations and tools. For this, the
 it exists. This script is not versioned so that each user may edit it freely.
 
 ### Container management
-When using VS Code, it handles most container related tasks: building, mounting essentials configurations, executing commands, etc. Outside, a `devcontainers.just` module contains most useful recipes. The container name is defined in both `devcontainer.json` and `devcontainers.just` as the equivalent of `"devcontainer-${basename $pwd}"`.
+VS Code handles most container related tasks: building, mounting essentials configurations, executing commands, etc. For standalone container management outside VS Code, a `devcontainers.just` module contains a few useful recipes. The container name is defined for both method as the equivalent of `"devcontainer-${basename $pwd}"`.
 
 ### Package manager — PDM
-
 Generated projects use [PDM](https://pdm-project.org/) to manage dependencies and the
 virtual environment. The venv is created at `/venv` inside the container.
 
@@ -88,12 +87,12 @@ pdm sync --group :all      # install / sync all groups
 
 | Tool | Purpose |
 |---|---|
-| [Ruff](https://docs.astral.sh/ruff/) | Linting and formatting |
+| [Ruff](https://docs.astral.sh/ruff/) | Linting |
+| [Black](https://black.readthedocs.io/en/stable/) | Formatter |
 | [Mypy](https://mypy.readthedocs.io/) | Static type checking (`install-types` enabled) |
 | [pre-commit](https://pre-commit.com/) | Git hooks that run Ruff and common checks on commit |
 
 All three are installed as dev dependencies and configured in `pyproject.toml`.
-Type hints are required on all function signatures.
 
 ## Development
 ### Repository layout
