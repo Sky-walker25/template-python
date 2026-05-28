@@ -4,7 +4,7 @@ A pretty good dev container setup for python development. Check the [rendered te
 
 ## Features
 
-> **Windows users:** use the [`windows` branch](../../tree/windows) of this template.
+> **Windows users:** use the `windows` branch of this template.
 
 - **Containerized development** — all Python packages are installed inside the dev container and do not leak into the host file system. The environment is initialized on first build (dependencies, mypy, pre-commit hooks). Includes a local, per-user setup script. Secrets are available separately for build time and runtime.
 - **Code quality tools** — linter (`ruff`), formatter (`black`, `isort`), type checker (`mypy`), and Git hooks (`pre-commit`).
