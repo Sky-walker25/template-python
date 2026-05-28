@@ -2,7 +2,7 @@ set working-directory := ".."
 
 container_name := "devcontainer-" + shell('basename $(pwd)')
 args := "--workspace-folder . --docker-path /bin/podman"
-shell := env_var_or_default("SHELL", "bash")
+shell := "bash"
 
 # List available recipes when no argument is provided
 default:

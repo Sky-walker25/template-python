@@ -53,7 +53,7 @@ commit from the repo, instead of the latest release (default).
 
 3. Launch dev container
 
-Launch VS Code or run `just devcontainers::up` from your terminal (executes the current `$SHELL` or fallback to `bash`).
+Launch VS Code or run `just devcontainers::up` from your terminal.
 
 ### Per user setup
 Some user have their own favorite configurations and tools. For this, the
