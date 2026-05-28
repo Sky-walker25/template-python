@@ -3,6 +3,9 @@
 A pretty good dev container setup for python development. Check the [rendered template](https://git.zagouri.org/templates/python-demo) to see it in action.
 
 ## Features
+
+> **Windows users:** use the [`windows` branch](../../tree/windows) of this template.
+
 - **Containerized development** — all Python packages are installed inside the dev container and do not leak into the host file system. The environment is initialized on first build (dependencies, mypy, pre-commit hooks). Includes a local, per-user setup script. Secrets are available separately for build time and runtime.
 - **Code quality tools** — linter (`ruff`), formatter (`black`, `isort`), type checker (`mypy`), and Git hooks (`pre-commit`).
 - **PEP-compliant** — follows PEP 8 (style), PEP 621 (`pyproject.toml`), PEP 735 (dependency groups), PEP 751 (`pylock.toml`), and more.
@@ -36,12 +39,6 @@ pipx inject copier copier-template-extensions
 copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
 ```
 
-Windows users must explicitly copy from the `windows` branch:
-
-```bash
-copier copy --trust --vcs-ref=windows git@gitlab.accenta.ai:accenta/recherche/template-python.git <PROJECT_NAME>
-```
-
 Copier runs three post-copy Git tasks: `git init`, `git add .`, and an initial
 commit.
 
@@ -51,15 +48,8 @@ To adapt an existing project to the template, run:
 copier copy --trust --skip-tasks git@gitlab.accenta.ai:accenta/recherche/template-python.git .
 ```
 
-On Windows, also add `--vcs-ref=windows`:
-
-```bash
-copier copy --trust --skip-tasks --vcs-ref=windows git@gitlab.accenta.ai:accenta/recherche/template-python.git .
-```
-
 Optionally, add `--vcs-ref=HEAD` to the `copier copy` command to use the latest
-commit from the repo, instead of the latest release (default). Windows users
-should use `--vcs-ref=windows` instead.
+commit from the repo, instead of the latest release (default).
 
 3. Launch dev container
 
