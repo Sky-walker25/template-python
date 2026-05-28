@@ -1,13 +1,12 @@
 # Python template
 
-A pretty good dev container setup for python development. Check [rendered template](https://git.zagouri.org/templates/python-demo).
+A pretty good dev container setup for python development. Check the [rendered template](https://git.zagouri.org/templates/python-demo) to see it in action.
 
 ## Features
-- All python packages are installed in the container in `/venv/`. They do not leak into the host file system.
-- Tokens are made available for build time and development separately.
-- Environment is setup after the workspace is mounted on first build. This is used for installing requirements, setting-up mypy, pre-commits, etc.
-    - Includes local, per-user setup script.
-- When launched through the `devcontainer` CLI, the container executes the shell currently used in the host, as indicated by the `$SHELL` environment variable (fallback to `bash`).
+- **Containerized development** — all Python packages are installed inside the dev container and do not leak into the host file system. The environment is initialized on first build (dependencies, mypy, pre-commit hooks). Includes a local, per-user setup script. Secrets are available separately for build time and runtime.
+- **Code quality tools** — linter (`ruff`), formatter (`black`, `isort`), type checker (`mypy`), and Git hooks (`pre-commit`).
+- **PEP-compliant** — follows PEP 8 (style), PEP 621 (`pyproject.toml`), PEP 735 (dependency groups), PEP 751 (`pylock.toml`), and more.
+- **Template updates** — generated projects can be updated to track new releases of this template.
 
 ### Template variables
 
@@ -64,7 +63,7 @@ should use `--vcs-ref=windows` instead.
 
 3. Launch dev container
 
-Launch VS Code or run `just devcontainers::up` from your terminal.
+Launch VS Code or run `just devcontainers::up` from your terminal (execute the current `$SHELL` or fallback to `bash`).
 
 ### Per user setup
 Some user have their own favorite configurations and tools. For this, the
