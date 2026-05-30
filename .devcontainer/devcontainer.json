@@ -38,7 +38,9 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "settings": {},
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
       "extensions": []
     }
   }
