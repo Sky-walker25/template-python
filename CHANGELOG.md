@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-06-01
+Add a new `windows` branch for Windows users, that relies on VS Code and
+rootfull docker.
+The default shell is set to `bash` for both VS Code and CLI, mostly for
+simplicity.
+
+### Changed
+- Set default terminal profile to bash in VS Code settings
+- Disable multiple shell selection
+- Move windows instructions to windows branch
+- Update README for Windows users to specify branch in Copier commands
+- Improve documentation
+
+### Fixed
+- Update post-copy Git tasks to use array syntax
+
+### Removed
+- Remove bad link
+
+
 ## [0.7.1] - 2026-05-21
 Minor fixes.
 
