@@ -34,5 +34,8 @@ author_email:
 _tasks:
     # Initialize git repository and make initial commit
     - ["git", "init"]
+    # Ignore file-mode (chmod) bits, which differ between Windows and Unix and
+    # otherwise show up as spurious diffs for cross-platform contributors.
+    - ["git", "config", "core.filemode", "false"]
     - ["git", "add", "."]
     - ["git", "commit", "-m", "chore(repo): Setup project structure"]
