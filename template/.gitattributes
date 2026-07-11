@@ -1,0 +1,12 @@
+# Normalize line endings: check out with the platform's native EOL, but always
+# store LF in the repository. Keeps Windows contributors from committing CRLF.
+* text=auto eol=lf
+
+# Binary files must never be normalized.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
