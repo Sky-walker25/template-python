@@ -13,8 +13,6 @@
   "updateRemoteUserUID": false,
   // Set variables during build process
   "runArgs": [
-    "--userns",
-    "keep-id:uid=1000,gid=1000",
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}",
     "--hostname",
@@ -22,19 +20,6 @@
   ],
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "just setup",
-  // Set SSH agent
-  "remoteEnv": {
-    "SSH_AUTH_SOCK": "${localEnv:SSH_AUTH_SOCK}",
-    "TERM": "${localEnv:TERM}"
-  },
-  // Mount SSH agent
-  "mounts": [
-    {
-      "source": "${localEnv:SSH_AUTH_SOCK}",
-      "target": "${localEnv:SSH_AUTH_SOCK}",
-      "type": "bind"
-    }
-  ],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
