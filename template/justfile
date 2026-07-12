@@ -1,4 +1,5 @@
 mod devcontainers '.recipes/devcontainers.just'
+mod uv '.recipes/uv.just'
 mod template '.recipes/template.just'
 mod release '.recipes/release.just'
 
