@@ -20,6 +20,7 @@ This project uses [`just`](https://just.systems/) as a command runner. Run `just
 | Command                       | Description                                                                       |
 | ----------------------------- | --------------------------------------------------------------------------------- |
 | `just setup`                  | Install dependencies, configure pre-commit hooks, and set up the dev environment  |
+| `just uv::setup`              | Set up a native (no-devcontainer) environment with uv (.venv + deps + hooks)      |
 | `just devcontainers::up`      | Build and start the dev container, then open a shell inside it                    |
 | `just devcontainers::stop`    | Stop the running dev container                                                    |
 | `just devcontainers::down`    | Remove the dev container                                                          |
@@ -35,6 +36,18 @@ Install libraries from pypi using: `pdm add <LIB>`. The library will appear in
 dependencies or dependency groups, see [pdm
 documentation](https://pdm-project.org/en/latest/usage/dependency/) for more
 information.
+
+### Native development without a devcontainer (uv)
+The dev container (PDM inside the container) is the reference workflow. To work
+natively on your host instead — Linux, macOS, or native Windows — provision the
+project with [uv](https://docs.astral.sh/uv/):
+
+    just uv::setup
+
+This creates a local `.venv` (Python 3.11), installs every dependency group and
+the pre-commit hooks. Run commands with `uv run <cmd>` — uv selects the `.venv`
+automatically, no activation needed. `uv.lock` is committed and is independent
+from `pylock.toml`; dependencies are still authored with PDM.
 
 ### Versioning and changelog
 This project follows [Semantic Versioning](https://semver.org/) and uses
