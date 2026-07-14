@@ -27,7 +27,7 @@ sets up for you — you may need to reboot once during the first install.
 Open **PowerShell**, download the script and run it:
 
 ```powershell
-irm https://gitlab.accenta.ai/accenta/recherche/template-python/-/raw/orbit/scripts/windows/bootstrap.ps1 -OutFile bootstrap.ps1
+irm https://raw.githubusercontent.com/Sky-walker25/template-python/main/scripts/windows/bootstrap.ps1 -OutFile bootstrap.ps1
 powershell -ExecutionPolicy Bypass -File .\bootstrap.ps1
 ```
 
@@ -76,7 +76,7 @@ At the end, the script prints your **public** key. Copy it into your forge:
 ## 5. Create your project
 
 ```powershell
-copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git my-project
+copier copy --trust git@github.com:Sky-walker25/template-python.git my-project
 ```
 
 Open the new folder in VS Code and choose **Reopen in Container**. Done.
