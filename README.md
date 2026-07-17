@@ -90,8 +90,9 @@ All three are installed as dev dependencies and configured in `pyproject.toml`.
 ```
 ├── copier.yaml          # Template config: prompts, tasks, Jinja extensions
 ├── extensions.py        # Jinja ContextHook — injects git_user_name / git_user_email
-├── cliff.toml           # git-cliff config for CHANGELOG generation (conventional commits)
-├── template/            # Actual Copier template source
+├── cliff.toml           # git-cliff config for CHANGELOG generation
+├── justfile             # List of recipes
+├── template/            # Template source
 │   ├── .devcontainer/   # Dev container definition (Containerfile, devcontainer.json)
 │   ├── .recipes/        # Just recipe modules copied into generated projects
 │   │   ├── devcontainers.just
