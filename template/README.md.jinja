@@ -13,6 +13,12 @@ repository, instead `.devcontainer/env` and `.env` files act as templates.
 To set up your development environment from the CLI, use `just
 devcontainer::up`.
 
+### Container runtime
+
+In VS Code, *Reopen in Container* lists both — pick the
+one matching your runtime. Outside VS Code, name the variant explicitly, for
+instance `devcontainer up --config .devcontainer/podman/devcontainer.json`.
+
 ### Project lifecycle
 This project uses [`just`](https://just.systems/) as a command runner. Run `just`
 (or `just --list`) to see all available recipes. Key commands:
@@ -50,7 +56,8 @@ The project is organized as follows:
 ```
 .recipes/               # Recipes modules for just, see also `justfile`
 .devcontainer/          # Dev container configuration and setup
-├── devcontainer.json   # Root configuration
+├── docker/devcontainer.json             # Configuration for the Docker runtime
+├── podman/devcontainer.json             # Configuration for the rootless Podman runtime
 ├── Containerfile       # Container definition
 ├── setup.sh            # Optional, per user, git-untracked configuration
 src/

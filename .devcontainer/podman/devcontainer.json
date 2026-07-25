@@ -3,7 +3,7 @@
 {
   "name": "devcontainer-template-python",
   "build": {
-    "dockerfile": "Containerfile"
+    "dockerfile": "../Containerfile"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {},
@@ -13,6 +13,8 @@
   "updateRemoteUserUID": false,
   // Set variables during build process
   "runArgs": [
+    "--userns",
+    "keep-id:uid=1000,gid=1000",
     "--name",
     "devcontainer-${localWorkspaceFolderBasename}",
     "--hostname",
@@ -20,8 +22,6 @@
   ],
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "just setup",
-  // Set security for SE Linux
-  "securityOpt": [ "label=disable" ],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {

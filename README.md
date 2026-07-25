@@ -63,6 +63,12 @@ it exists. This script is not versioned so that each user may edit it freely.
 ### Container management
 VS Code handles most container related tasks: building, mounting essentials configurations, executing commands, etc. For standalone container management outside VS Code, a `devcontainers.just` module contains a few useful recipes. The container name is defined for both method as the equivalent of `"devcontainer-${basename $pwd}"`.
 
+### Container runtime variants
+
+In VS Code, *Reopen in Container* lists both variants; pick the one matching
+your runtime. Outside VS Code, name the variant explicitly, for instance
+`devcontainer up --config .devcontainer/podman/devcontainer.json`.
+
 ### Package manager — PDM
 Generated projects use [PDM](https://pdm-project.org/) to manage dependencies and the
 virtual environment. The venv is created at `/venv` inside the container.
@@ -94,6 +100,8 @@ All three are installed as dev dependencies and configured in `pyproject.toml`.
 ├── justfile             # List of recipes
 ├── template/            # Template source
 │   ├── .devcontainer/   # Dev container definition (Containerfile, devcontainer.json)
+│   │   ├── docker/devcontainer.json
+│   │   └── podman/devcontainer.json
 │   ├── .recipes/        # Just recipe modules copied into generated projects
 │   │   ├── devcontainers.just
 │   │   ├── release.just.jinja
