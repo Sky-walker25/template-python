@@ -20,6 +20,8 @@
   ],
   // Uncomment the next line to run commands after the container is created.
   "postCreateCommand": "just setup",
+  // Set security for SE Linux
+  "securityOpt": [ "label=disable" ],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
