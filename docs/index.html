@@ -146,8 +146,8 @@ function code(txt){
   return '<pre><button class="copy">Copy</button><code>'+esc(txt)+'</code></pre>';
 }
 // Raw (unescaped) placeholders - code() escapes them for display and copy.
-const RAW = "https://gitlab.accenta.ai/accenta/recherche/template-python/-/raw/orbit";
-const TEMPLATE = "git@gitlab.accenta.ai:accenta/recherche/template-python.git my-project";
+const RAW = "https://raw.githubusercontent.com/Sky-walker25/template-python/main";
+const TEMPLATE = "git@github.com:Sky-walker25/template-python.git my-project";
 const isWin  = () => state.os==="windows";
 const isMac  = () => state.os==="macos";
 const podman = () => state.engine==="podman";
