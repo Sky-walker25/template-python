@@ -14,7 +14,7 @@ install or manage. You run this **once** per machine.
 Download it and run it:
 
 ```bash
-curl -fsSL https://gitlab.accenta.ai/accenta/recherche/template-python/-/raw/orbit/scripts/linux/bootstrap.sh -o bootstrap.sh
+curl -fsSL https://raw.githubusercontent.com/Sky-walker25/template-python/main/scripts/linux/bootstrap.sh -o bootstrap.sh
 bash bootstrap.sh
 ```
 
@@ -85,7 +85,7 @@ This lets `git` push/pull from inside the container.
 ## 4. Create your project
 
 ```bash
-copier copy --trust git@gitlab.accenta.ai:accenta/recherche/template-python.git my-project
+copier copy --trust git@github.com:Sky-walker25/template-python.git my-project
 ```
 
 Open the new folder in VS Code and choose **Reopen in Container**. Done.

@@ -32,7 +32,7 @@ param(
 # check $LASTEXITCODE / guard with try-catch explicitly.
 $ErrorActionPreference = 'Continue'
 
-$TemplateUrl = 'git@gitlab.accenta.ai:accenta/recherche/template-python.git'
+$TemplateUrl = 'git@github.com:Sky-walker25/template-python.git'
 $SshKey      = Join-Path $HOME '.ssh\id_ed25519'
 $Interactive = -not $Yes
 

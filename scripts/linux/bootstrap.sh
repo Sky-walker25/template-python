@@ -11,7 +11,7 @@
 #   ./bootstrap.sh --check  report only, change nothing
 set -euo pipefail
 
-TEMPLATE_URL="git@gitlab.accenta.ai:accenta/recherche/template-python.git"
+TEMPLATE_URL="git@github.com:Sky-walker25/template-python.git"
 SSH_KEY="$HOME/.ssh/id_ed25519"
 INTERACTIVE=1
 CHECK=0
