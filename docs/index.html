@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dev container setup</title>
+<style>
+  :root{
+    --bg:#f7f8f8; --card:#ffffff; --ink:#1b1f23; --muted:#5b666f;
+    --line:#e4e8eb; --accent:#0e7c86; --accent-ink:#ffffff;
+    --code-bg:#0f1620; --code-ink:#e8eef3; --chip:#eef1f2; --chip-on:#0e7c86;
+    --warn-bg:#fff6e6; --warn-line:#f0d190;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e1216; --card:#161c22; --ink:#e8eef3; --muted:#9aa7b2;
+      --line:#28313a; --accent:#3fb6c1; --accent-ink:#04252a;
+      --code-bg:#0a0f14; --code-ink:#dfe8ef; --chip:#1d262e; --chip-on:#3fb6c1;
+      --warn-bg:#2a2314; --warn-line:#5c4a1e;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f7f8f8; --card:#ffffff; --ink:#1b1f23; --muted:#5b666f;
+    --line:#e4e8eb; --accent:#0e7c86; --accent-ink:#ffffff;
+    --code-bg:#0f1620; --code-ink:#e8eef3; --chip:#eef1f2; --chip-on:#0e7c86;
+    --warn-bg:#fff6e6; --warn-line:#f0d190;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0e1216; --card:#161c22; --ink:#e8eef3; --muted:#9aa7b2;
+    --line:#28313a; --accent:#3fb6c1; --accent-ink:#04252a;
+    --code-bg:#0a0f14; --code-ink:#dfe8ef; --chip:#1d262e; --chip-on:#3fb6c1;
+    --warn-bg:#2a2314; --warn-line:#5c4a1e;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:820px; margin:0 auto; padding:32px 20px 80px}
+  header.top{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap}
+  h1{font-size:1.7rem; margin:0 0 4px; letter-spacing:-.01em}
+  .sub{color:var(--muted); margin:0 0 24px}
+  .theme-btn{
+    background:var(--chip); color:var(--ink); border:1px solid var(--line);
+    border-radius:999px; padding:6px 12px; font-size:.82rem; cursor:pointer;
+  }
+  .panel{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px; margin:18px 0;
+  }
+  .label{font-size:.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 8px}
+  .chips{display:flex; gap:8px; flex-wrap:wrap}
+  .chip{
+    background:var(--chip); color:var(--ink); border:1px solid var(--line);
+    border-radius:10px; padding:8px 14px; font-size:.92rem; cursor:pointer;
+    transition:.12s; user-select:none;
+  }
+  .chip[aria-pressed="true"]{background:var(--chip-on); color:var(--accent-ink); border-color:transparent}
+  .chip[disabled]{opacity:.4; cursor:not-allowed}
+  .chip .hint{display:block; font-size:.72rem; color:var(--muted); margin-top:2px}
+  .chip[aria-pressed="true"] .hint{color:var(--accent-ink); opacity:.85}
+  ol.steps{list-style:none; counter-reset:s; margin:0; padding:0}
+  ol.steps>li{counter-increment:s; position:relative; padding:0 0 6px 44px; margin:0 0 22px}
+  ol.steps>li::before{
+    content:counter(s); position:absolute; left:0; top:-2px;
+    width:30px; height:30px; border-radius:50%; background:var(--accent); color:var(--accent-ink);
+    display:grid; place-items:center; font-size:.9rem; font-weight:600;
+  }
+  ol.steps>li h3{margin:2px 0 8px; font-size:1.06rem}
+  p{margin:.4rem 0}
+  a{color:var(--accent)}
+  pre{
+    background:var(--code-bg); color:var(--code-ink); border-radius:10px;
+    padding:12px 14px; overflow-x:auto; margin:10px 0; position:relative;
+    font-size:.86rem;
+  }
+  pre code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .copy{
+    position:absolute; top:8px; right:8px; background:rgba(255,255,255,.1);
+    color:var(--code-ink); border:1px solid rgba(255,255,255,.2); border-radius:7px;
+    font-size:.72rem; padding:3px 8px; cursor:pointer;
+  }
+  .copy:hover{background:rgba(255,255,255,.2)}
+  code.inline{background:var(--chip); padding:1px 6px; border-radius:6px; font-size:.86em;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .setting{
+    background:var(--code-bg); color:var(--code-ink); border-radius:10px;
+    padding:12px 14px; margin:10px 0; font-size:.86rem;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  .setting .k{color:var(--muted)}
+  .setting .v{display:block; margin-top:6px; font-weight:600}
+  .note{
+    background:var(--warn-bg); border:1px solid var(--warn-line); border-radius:10px;
+    padding:10px 14px; margin:10px 0; font-size:.9rem;
+  }
+  details.tr{border:1px solid var(--line); border-radius:10px; padding:0 14px; margin:10px 0; background:var(--card)}
+  details.tr summary{cursor:pointer; padding:12px 0; font-weight:600; font-size:.95rem}
+  details.tr[open]{padding-bottom:6px}
+  .muted{color:var(--muted)}
+  footer{color:var(--muted); font-size:.82rem; margin-top:36px; text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Dev container setup</h1>
+      <p class="sub">A one-time host setup to use the <strong>Python dev-container template</strong>.</p>
+    </div>
+    <button class="theme-btn" id="theme">&#9680; Theme</button>
+  </header>
+
+  <div class="panel">
+    <p class="label">Your operating system</p>
+    <div class="chips" id="os">
+      <button class="chip" data-os="macos" aria-pressed="true">macOS<span class="hint">Apple Silicon / Intel</span></button>
+      <button class="chip" data-os="windows" aria-pressed="false">Windows<span class="hint">WSL 2</span></button>
+      <button class="chip" data-os="linux" aria-pressed="false">Linux<span class="hint">native</span></button>
+    </div>
+    <p class="label" style="margin-top:18px">Container engine</p>
+    <div class="chips" id="engine">
+      <button class="chip" data-engine="docker" aria-pressed="true">Docker Desktop<span class="hint">recommended</span></button>
+      <button class="chip" data-engine="podman" aria-pressed="false">Podman<span class="hint">open-source</span></button>
+    </div>
+    <p class="muted" id="engine-note" style="font-size:.82rem; margin-top:10px"></p>
+  </div>
+
+  <ol class="steps" id="steps"></ol>
+
+  <h2 style="font-size:1.15rem; margin:34px 0 6px">Troubleshooting</h2>
+  <div id="trouble"></div>
+
+  <footer>
+    Full step-by-step guides live in <code class="inline">scripts/&lt;os&gt;/README.md</code>.
+  </footer>
+</div>
+
+<script>
+const state = { os:"macos", engine:"docker" };
+
+/* ---------- helpers ---------- */
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+function code(txt){
+  return '<pre><button class="copy">Copy</button><code>'+esc(txt)+'</code></pre>';
+}
+// Raw (unescaped) placeholders - code() escapes them for display and copy.
+const RAW = "https://gitlab.accenta.ai/accenta/recherche/template-python/-/raw/orbit";
+const TEMPLATE = "git@gitlab.accenta.ai:accenta/recherche/template-python.git my-project";
+const isWin  = () => state.os==="windows";
+const isMac  = () => state.os==="macos";
+const podman = () => state.engine==="podman";
+
+/* Point the Dev Containers extension at Podman - matches the README blocks. */
+function dockerPathBlock(){
+  const full = isMac()
+    ? "/opt/podman/bin/podman"
+    : isWin()
+    ? "C:\\Users\\<you>\\AppData\\Local\\Programs\\Podman\\podman.exe"
+    : null;
+  let s = '<p>Point VS Code at Podman - <strong>Settings</strong> &rarr; <strong>Extensions</strong> '+
+    '&rarr; <strong>Dev Containers</strong>:</p>'+
+    '<div class="setting"><span class="k">Dev &gt; Containers: Docker Path</span><span class="v">podman</span></div>';
+  if(full){
+    s += '<p class="muted" style="font-size:.85rem">If <code class="inline">podman</code> alone '+
+      'does not work, use the full path instead:</p>'+
+      '<div class="setting"><span class="k">Dev &gt; Containers: Docker Path</span><span class="v">'+esc(full)+'</span></div>';
+  }
+  return s;
+}
+
+/* ---------- Step 1: container engine ---------- */
+function engineStep(){
+  // Linux: no separate engine step - the bootstrap script installs Podman.
+  if(state.os==="linux") return "";
+
+  if(!podman()){
+    // Docker Desktop (the main path on macOS / Windows).
+    const dl = isMac()
+      ? '<a href="https://www.docker.com/products/docker-desktop/">Docker Desktop for Mac</a> '+
+        '(choose <strong>Apple Silicon</strong> or <strong>Intel</strong> to match your Mac)'
+      : '<a href="https://www.docker.com/products/docker-desktop/">Docker Desktop for Windows</a> '+
+        '(keep the default <em>"Use WSL 2"</em> option)';
+    const extra = isWin()
+      ? ' On Windows it runs on WSL 2, which it sets up for you - you may need to reboot once during the first install.'
+      : ' It manages its own lightweight virtual machine - there is nothing else to size, start or keep running.';
+    return '<li><h3>Install Docker Desktop</h3>'+
+      '<p>Docker Desktop is the container engine.'+extra+'</p>'+
+      '<p>1. Download and install '+dl+'.</p>'+
+      '<p>2. Open <strong>Docker Desktop</strong> and wait until it reads '+
+      '<em>"Docker Desktop is running"</em>.</p></li>';
+  }
+
+  // Podman (the alternative on macOS / Windows).
+  if(isMac()){
+    return '<li><h3>Install Podman</h3>'+
+      '<p>Install <a href="https://podman-desktop.io">Podman Desktop</a> - it creates and starts '+
+      'the Podman virtual machine for you. Or install the CLI and start the machine yourself:</p>'+
+      code("podman machine init\npodman machine start")+'</li>';
+  }
+  return '<li><h3>Install Podman</h3>'+
+    '<p>Install <a href="https://podman-desktop.io">Podman Desktop</a> - it installs Podman, sets up '+
+    'WSL 2, and creates + starts the Podman machine for you. Or start the machine yourself from the CLI:</p>'+
+    code("podman machine init\npodman machine start")+'</li>';
+}
+
+/* ---------- Step: bootstrap script ---------- */
+function scriptStep(){
+  const engineLine = state.os==="linux"
+    ? '<li><strong>Podman</strong> - installs it with your package manager (<code class="inline">apt</code>, '+
+      '<code class="inline">dnf</code>, <code class="inline">pacman</code> or <code class="inline">zypper</code>) '+
+      'if missing, then checks that rootless mode works,</li>'
+    : '';
+  const run = isWin()
+    ? code("irm "+RAW+"/scripts/windows/bootstrap.ps1 -OutFile bootstrap.ps1\n"+
+        "powershell -ExecutionPolicy Bypass -File .\\bootstrap.ps1")
+    : code("curl -fsSL "+RAW+"/scripts/"+state.os+"/bootstrap.sh -o bootstrap.sh\nbash bootstrap.sh");
+  const checkOpt = isWin() ? "-Check" : "--check";
+  const yesOpt   = isWin() ? "-Yes"   : "--yes";
+  const gitLine = isMac()
+    ? '<li>installs the <strong>Xcode Command Line Tools</strong> (which provide <code class="inline">git</code>) if missing,</li>'
+    : isWin()
+    ? '<li>installs <strong>git</strong> (Git for Windows, via <code class="inline">winget</code>, silent) if missing,</li>'
+    : '<li>installs <strong>git</strong> if missing,</li>';
+  const sshLine = isMac()
+    ? '<li>generates an <strong>SSH key</strong> and loads it into the agent via the <strong>Keychain</strong>, '+
+      'so it is available again after every reboot.</li>'
+    : isWin()
+    ? '<li>generates an <strong>SSH key</strong> and enables the <strong>ssh-agent</strong> service '+
+      '(this opens one admin prompt) so the key loads again on every reboot.</li>'
+    : '<li>generates an <strong>SSH key</strong> if you have none, loads it into the agent, and makes it '+
+      'persistent in <code class="inline">~/.ssh/config</code>.</li>';
+  return '<li><h3>Run the bootstrap script</h3>'+
+    '<p>A one-time host setup. It is <strong>idempotent</strong> and <strong>never overwrites an '+
+    'existing SSH key</strong>. Download it and run:</p>'+run+
+    '<table style="width:100%; border-collapse:collapse; font-size:.88rem; margin:6px 0 10px">'+
+    '<tr><td style="padding:3px 10px 3px 0"><code class="inline">'+checkOpt+'</code></td>'+
+    '<td class="muted">Only reports what is installed - changes nothing.</td></tr>'+
+    '<tr><td style="padding:3px 10px 3px 0"><code class="inline">'+yesOpt+'</code></td>'+
+    '<td class="muted">Non-interactive: accepts defaults, asks nothing.</td></tr></table>'+
+    '<p>It:</p><ul style="margin:.2rem 0 .2rem 1.1rem; padding:0">'+
+    engineLine+
+    '<li>installs <strong>Copier</strong> (via <a href="https://docs.astral.sh/uv/"><code class="inline">uv</code></a>, '+
+    'which brings its own Python) so you can generate projects,</li>'+
+    gitLine+
+    '<li>sets your <strong>git</strong> name/email and a friendly default editor,</li>'+
+    sshLine+'</ul>'+
+    '<p class="muted" style="font-size:.85rem">Tip: run it with <code class="inline">'+checkOpt+
+    '</code> first to see the starting state.</p></li>';
+}
+
+/* ---------- Step: SSH key ---------- */
+function sshKeyStep(){
+  return '<li><h3>Add your SSH key to your Git forge</h3>'+
+    '<p>At the end, the script prints your <strong>public</strong> key. Copy it into your forge:</p>'+
+    '<ul style="margin:.2rem 0 .2rem 1.1rem; padding:0">'+
+    '<li><strong>GitHub</strong> &rarr; Settings &rarr; <em>SSH and GPG keys</em> &rarr; New SSH key</li>'+
+    '<li><strong>GitLab / Gitea</strong> &rarr; Preferences &rarr; <em>SSH Keys</em></li></ul>'+
+    '<p class="muted" style="font-size:.85rem">This lets <code class="inline">git</code> push/pull '+
+    'from inside the container.</p></li>';
+}
+
+/* ---------- Step: VS Code ---------- */
+function editorStep(){
+  let s = '<li><h3>Open the template in VS Code</h3>'+
+    '<p>Install <a href="https://code.visualstudio.com/download">VS Code</a> and then the '+
+    '<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers</a> '+
+    'extension.</p>';
+  if(podman() || state.os==="linux"){
+    s += dockerPathBlock();
+  } else {
+    s += '<p>With Docker Desktop, <strong>no extra setting is needed</strong> - VS Code uses '+
+      '<code class="inline">docker</code> by default.</p>';
+  }
+  return s+'</li>';
+}
+
+/* ---------- Step: create project ---------- */
+function projectStep(){
+  const cmd = code("copier copy --trust "+TEMPLATE);
+  return '<li><h3>Create your project</h3>'+cmd+
+    '<p>Open the new folder in VS Code and choose <strong>Reopen in Container</strong>. Done.</p></li>';
+}
+
+function renderSteps(){
+  const steps = [engineStep(), scriptStep(), sshKeyStep(), editorStep(), projectStep()]
+    .filter(Boolean);
+  document.getElementById("steps").innerHTML = steps.join("");
+}
+
+/* ---------- Troubleshooting ---------- */
+function tr(q,a){ return '<details class="tr"><summary>'+q+'</summary>'+a+'</details>'; }
+function renderTrouble(){
+  let out = "";
+  if(podman() && state.os!=="linux"){
+    out += tr('"Cannot connect to the Docker daemon" (but I use Podman)',
+      '<p>The Podman machine is not running. Start it:</p>'+code("podman machine start"));
+  }
+  if(podman()){
+    out += tr('VS Code says "podman command not found"',
+      '<p>The GUI did not inherit your shell <code class="inline">PATH</code>. Set '+
+      '<code class="inline">Dev &gt; Containers: Docker Path</code> to the full podman path '+
+      '(see the VS Code step) and fully quit &amp; reopen VS Code.</p>');
+  }
+  if(!podman()){
+    out += tr('VS Code cannot find Docker',
+      '<p>Make sure <strong>Docker Desktop</strong> is open and reads '+
+      '<em>"Docker Desktop is running"</em> before you reopen in the container.</p>');
+  }
+  out += tr('Git push inside the container fails with "Permission denied (publickey)"',
+    '<p>Two things must be true: the key is loaded in your host agent, and it is registered on the '+
+    'forge. Re-run the script with <code class="inline">'+(isWin()?"-Check":"--check")+
+    '</code> to verify the agent, then confirm the public key is pasted into your forge.</p>');
+  document.getElementById("trouble").innerHTML = out;
+}
+
+/* ---------- wiring ---------- */
+function render(){ renderSteps(); renderTrouble(); }
+
+function syncEngine(){
+  [...document.querySelectorAll("#engine .chip")].forEach(c=>
+    c.setAttribute("aria-pressed", c.dataset.engine===state.engine));
+  const note = document.getElementById("engine-note");
+  note.textContent = state.os==="linux"
+    ? "On Linux, Podman runs natively - no virtual machine, and the bootstrap script installs it for you."
+    : state.engine==="docker"
+    ? "Docker Desktop is the simplest path. Prefer open-source? Pick Podman."
+    : "Podman is daemonless, rootless and fully open-source.";
+}
+
+document.getElementById("os").addEventListener("click", e=>{
+  const b = e.target.closest("[data-os]"); if(!b) return;
+  state.os = b.dataset.os;
+  [...document.querySelectorAll("#os .chip")].forEach(c=>c.setAttribute("aria-pressed", c===b));
+  // Docker Desktop has no place on Linux - the flow there is native Podman.
+  const docker = document.querySelector('#engine [data-engine="docker"]');
+  if(state.os==="linux"){
+    state.engine = "podman";
+    docker.setAttribute("disabled","");
+  } else {
+    docker.removeAttribute("disabled");
+  }
+  syncEngine(); render();
+});
+
+document.getElementById("engine").addEventListener("click", e=>{
+  const b = e.target.closest("[data-engine]"); if(!b || b.hasAttribute("disabled")) return;
+  state.engine = b.dataset.engine; syncEngine(); render();
+});
+
+// copy delegation
+document.addEventListener("click", e=>{
+  const cp = e.target.closest(".copy");
+  if(cp){
+    const txt = cp.parentElement.querySelector("code").innerText;
+    navigator.clipboard?.writeText(txt);
+    cp.textContent = "Copied"; setTimeout(()=>cp.textContent="Copy", 1200);
+  }
+});
+
+// theme toggle
+document.getElementById("theme").addEventListener("click", ()=>{
+  const cur = document.documentElement.getAttribute("data-theme");
+  const next = cur==="dark" ? "light" : cur==="light" ? "dark"
+    : (matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark");
+  document.documentElement.setAttribute("data-theme", next);
+});
+
+syncEngine();
+render();
+</script>
+</body>
+</html>
