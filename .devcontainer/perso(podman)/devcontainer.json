@@ -1,0 +1,50 @@
+// -*- jsonc -*-
+// For format details, see https://containers.dev/implementors/json_reference/.
+{
+  "name": "devcontainer-template-python",
+  "build": {
+    "dockerfile": "../Containerfile"
+  },
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {},
+  // Handle user namespace mapping
+  "remoteUser": "worker",
+  "containerUser": "worker",
+  "updateRemoteUserUID": false,
+  // Set variables during build process
+  "runArgs": [
+    "--userns",
+    "keep-id:uid=1000,gid=1000",
+    "--name",
+    "devcontainer-${localWorkspaceFolderBasename}",
+    "--hostname",
+    "template-python"
+  ],
+  // Uncomment the next line to run commands after the container is created.
+  "postCreateCommand": "just setup",
+    // Mount SSH agent
+  "mounts": [
+    {
+    "source": "${localEnv:HOME}/.claude",
+    "target": "/home/worker/.claude",
+    "type": "bind"
+    },
+    {
+    "source": "${localEnv:HOME}/.codex",
+    "target": "/home/worker/.codex",
+    "type": "bind"
+    }
+  ],
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "anthropic.claude-code",
+        "openai.chatgpt"
+      ]
+    }
+  }
+}
